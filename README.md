@@ -1,4 +1,4 @@
-# NATURA ESSENCIA
+# NATURA ESSÊNCIA
 
 Source code for the interface of Natura Essencia, the solution developed for the 
 Hackathon Eugenio Challenge Hub.
