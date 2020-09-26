@@ -13,5 +13,6 @@ module.exports = {
   },
   rules: {
     quotes: ['error', 'single'],
+    'jsx-quotes': ['error', 'prefer-single'],
   },
 };
