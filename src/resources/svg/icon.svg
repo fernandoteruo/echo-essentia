@@ -1,5 +1,5 @@
 <svg
-        xmlns="http://www.w3.org/2000/svg" viewBox='0 0 100 100'>
+        xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 100 100">
     <defs>
         <linearGradient x1="0" y1="0.5" x2="1" y2="0.5" id="circle">
             <stop offset="0%" stop-color="#419a1c"></stop>
@@ -18,26 +18,24 @@
             <stop offset="100%" stop-color="#ffffff"></stop>
         </linearGradient>
     </defs>
-    <svg viewBox="0 0 150 150">
-        <g>
-            <circle cx="50" cy="50" r="50" fill="url('#circle')"></circle>
-        </g>
-    </svg>
-    <svg viewBox="0 0 150 150">
+    <g>
+        <circle cx="50" cy="50" r="50" fill="url('#circle')"></circle>
+    </g>
+    <svg viewBox="50 -10 0 110">
         <g>
             <path fill="url('#square')"
                   d="M33.756,21.234c0,0.008-2.242,0.022-2.242,0.022c-4.856,0-8.792,3.936-8.792,8.792v54.161    c0,4.855,3.936,8.791,8.792,8.791h37.455c4.854,0,8.793-3.936,8.793-8.791V30.047c0-4.856-3.938-8.792-8.793-8.792    c0,0-2.245-0.013-2.245-0.021H33.756z M68.969,30.047v54.162H31.512V30.047H68.969z"
                   stroke="none" style=""></path>
         </g>
     </svg>
-    <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 -8 100 100" xmlns="http://www.w3.org/2000/svg">
         <g>
             <path fill="url('#roundSquare')"
                   d="M68,14.337c0-4.653-2.66-8.425-7.309-8.425c0,0-2.096-0.014-2.096-0.02L43.088,6    c0,0.006-2.584,0.021-2.584,0.021C36.001,6.021,32,9.555,32,14v5h36V14.337z"
                   stroke="none" style=""></path>
         </g>
     </svg>
-    <svg viewBox="-120-150 600 600" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="-140 -200 450 450" xmlns="http://www.w3.org/2000/svg">
         <g>
             <path d="M84.385,0.139c0,0,7.216,17.238-14.382,53.421c-17.426,29.192-18.639,58.697,3.698,78.898
             c1.574,1.424,3.225,2.605,4.922,3.58c1.028,0.549,2.12,0.998,3.211,1.226c0,0-7.284,16.83-16.376,24.38
