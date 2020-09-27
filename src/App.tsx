@@ -2,30 +2,39 @@ import React, { lazy, Suspense } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { theme } from './themes';
-import { GlobalStyle, PageWrapper } from './components/globals/styles';
-import LinearProgress from './components/progress/LinearProgress';
+import { GlobalStyle, ScreenTransition } from './components/globals/styles';
+import CircularProgress from './components/progress/CircularProgress';
 
 const Home = lazy(() => import('./screens/home'));
 const Preferences = lazy(() => import('./screens/preferences'));
-const Samples = lazy(() => import('./screens/samples'));
 const Refill = lazy(() => import('./screens/refill'));
 
 function App() {
+  const fallback = (
+    <ScreenTransition>
+      <CircularProgress />
+    </ScreenTransition>
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router>
-        <PageWrapper />
-        <main>
-          <Suspense fallback={<LinearProgress />}>
+        <Suspense fallback={fallback}>
+          <main>
             <Switch>
-              <Route component={Home} path='/' />
-              <Route component={Preferences} path='/preferences' />
-              <Route component={Samples} path='/samples' />
-              <Route component={Refill} path='/refill' />
+              <Route exact path='/'>
+                <Home />
+              </Route>
+              <Route path='/preferences'>
+                <Preferences />
+              </Route>
+              <Route path='/refill'>
+                <Refill />
+              </Route>
             </Switch>
-          </Suspense>
-        </main>
+          </main>
+        </Suspense>
       </Router>
     </ThemeProvider>
   );

@@ -37,11 +37,11 @@ export const theme = {
     base: '0px 2px 8px rgba(0, 0, 0, 0.1)',
   },
   screenWidth: {
-    xs: `${ScreenWidth.XS}px`,
-    sm: `${ScreenWidth.SM}px`,
-    md: `${ScreenWidth.MD}px`,
-    lg: `${ScreenWidth.LG}px`,
-    xl: `${ScreenWidth.XL}px`,
+    xs: `(min-width: ${ScreenWidth.XS}px)`,
+    sm: `(min-width: ${ScreenWidth.SM}px)`,
+    md: `(min-width: ${ScreenWidth.MD}px)`,
+    lg: `(min-width: ${ScreenWidth.LG}px)`,
+    xl: `(min-width: ${ScreenWidth.XL}px)`,
   },
 } as const;
 
