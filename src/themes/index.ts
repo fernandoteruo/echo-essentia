@@ -2,7 +2,10 @@ import { ThemeProps } from 'styled-components';
 
 enum Colors {
   BACKGROUND = '#F9FAFB',
-  BRAND = '#F93',
+  BRAND_PRIMARY = '#FF6C0E',
+  BRAND_SECONDARY = '#F93',
+  WHITE = '#FFFFFF',
+  BRAND_PRIMARY_75 = '#ffb080',
 }
 
 enum ScreenWidth {
@@ -15,8 +18,11 @@ enum ScreenWidth {
 
 export const theme = {
   colors: {
-    primary: Colors.BRAND,
+    primary: Colors.BRAND_PRIMARY,
+    secondary: Colors.BRAND_SECONDARY,
     background: Colors.BACKGROUND,
+    white: Colors.WHITE,
+    primaryOpacity75: Colors.BRAND_PRIMARY_75,
   },
   spacing: {
     xs: '4px',
