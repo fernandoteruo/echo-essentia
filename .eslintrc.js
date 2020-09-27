@@ -14,5 +14,7 @@ module.exports = {
   rules: {
     quotes: ['error', 'single'],
     'jsx-quotes': ['error', 'prefer-single'],
+    'array-bracket-spacing': 'error',
+    'object-curly-spacing': 'error',
   },
 };

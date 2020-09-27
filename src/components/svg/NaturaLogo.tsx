@@ -1,9 +1,13 @@
 import React from 'react';
 
-const NaturaLogo = () => {
+interface IProps {
+  dimension: number;
+}
+
+const NaturaLogo = ({ dimension }: IProps) => {
   return (
     <div>
-      <svg width='512' height='512' viewBox='0 0 44 34'>
+      <svg width={dimension} height={dimension} viewBox='0 0 44 34'>
         <defs>
           <radialGradient
             id='natura-logo'
