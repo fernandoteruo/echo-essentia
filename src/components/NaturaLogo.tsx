@@ -11,7 +11,8 @@ const NaturaLogo = () => {
             cy='1.302'
             r='26.6653'
             gradientTransform='matrix(-0.9865 0.1638 -0.1147 -0.6908 35.9063 -0.7466)'
-            gradientUnits='userSpaceOnUse'>
+            gradientUnits='userSpaceOnUse'
+          >
             <stop offset='0.2594' stopColor='rgb(255, 192, 0)' />
             <stop offset='0.414' stopColor='rgb(255, 188, 1)' />
             <stop offset='0.5796' stopColor='rgb(255, 175, 3)' />
