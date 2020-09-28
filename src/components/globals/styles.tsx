@@ -17,6 +17,8 @@ export const GlobalStyle = createGlobalStyle<WithTheme>`
 export const PageWrapper = styled.div<WithTheme>`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: ${({ theme: { spacing } }) => spacing.xs};
 
   @media ${({ theme: { screenWidth } }) => screenWidth.md} {
