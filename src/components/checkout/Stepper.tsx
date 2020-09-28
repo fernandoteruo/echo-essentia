@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Step, StepLabel, Stepper } from '@material-ui/core';
+import { Step, StepLabel, Stepper as MuiStepper } from '@material-ui/core';
 import styled from 'styled-components';
 
 const StyledStep = styled(Step)`
@@ -23,18 +23,18 @@ interface IProps {
   activeStep: Steps;
 }
 
-const CheckoutStepper: FC<IProps> = ({ activeStep }: IProps) => {
+const Stepper: FC<IProps> = ({ activeStep }: IProps) => {
   const steps = getSteps();
 
   return (
-    <Stepper activeStep={activeStep} alternativeLabel>
+    <MuiStepper activeStep={activeStep} alternativeLabel>
       {steps.map((label) => (
         <StyledStep key={label}>
           <StepLabel>{label}</StepLabel>
         </StyledStep>
       ))}
-    </Stepper>
+    </MuiStepper>
   );
 };
 
-export default CheckoutStepper;
+export default Stepper;

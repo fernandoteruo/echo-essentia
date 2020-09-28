@@ -61,12 +61,3 @@ export const ScreenTransition = styled.div`
     }
   }
 `;
-
-export const Container = styled.div`
-  height: 50vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;

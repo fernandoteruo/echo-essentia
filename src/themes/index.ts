@@ -4,6 +4,7 @@ enum Colors {
   BACKGROUND = '#F9FAFB',
   BRAND = '#419a1c',
   WHITE = '#FFFFFF',
+  GREY = 'rgba(0, 0, 0, 0.26)',
 }
 
 enum ScreenWidth {
@@ -19,6 +20,7 @@ export const theme = {
     primary: Colors.BRAND,
     background: Colors.BACKGROUND,
     white: Colors.WHITE,
+    grey: Colors.GREY,
   },
   spacing: {
     xs: '4px',

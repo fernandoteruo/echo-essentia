@@ -1,13 +1,11 @@
 import React, { FC } from 'react';
 import { PageWrapper } from '../../components/globals/styles';
-import CheckoutStepper, {
-  Steps,
-} from '../../components/navigation/CheckoutStepper';
+import Stepper, { Steps } from '../../components/checkout/Stepper';
 
 const Payment: FC = () => {
   return (
     <PageWrapper>
-      <CheckoutStepper activeStep={Steps.PAYMENT} />
+      <Stepper activeStep={Steps.PAYMENT} />
     </PageWrapper>
   );
 };

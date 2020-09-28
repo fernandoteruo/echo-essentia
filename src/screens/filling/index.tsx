@@ -1,13 +1,11 @@
 import React, { FC } from 'react';
 import { PageWrapper } from '../../components/globals/styles';
-import CheckoutStepper, {
-  Steps,
-} from '../../components/navigation/CheckoutStepper';
+import Stepper, { Steps } from '../../components/checkout/Stepper';
 
 const Filling: FC = () => {
   return (
     <PageWrapper>
-      <CheckoutStepper activeStep={Steps.FILLING} />
+      <Stepper activeStep={Steps.FILLING} />
     </PageWrapper>
   );
 };

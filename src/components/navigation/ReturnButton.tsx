@@ -1,13 +1,13 @@
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
-import React, { FC } from 'react';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 import { useHistory } from 'react-router-dom';
 
 const StyledButton = styled(Button)`
-  background-color: ${(props) => props.theme.colors.primary} !important;
-  color: ${(props) => props.theme.colors.white} !important;
-  width: 50% !important;
+  background-color: ${(props) => props.theme.colors.grey} !important;
+  color: ${(props) => props.theme.colors.grey} !important;
+  width: 40% !important;
 
   @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
   }
@@ -22,22 +22,26 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const StartButton: FC = () => {
+interface IProps {
+  label: string;
+}
+
+const ReturnButton: FC<IProps> = ({ label }: IProps) => {
   const history = useHistory();
 
-  const navigateChecklist = () => {
-    history.push('/products');
+  const navigateReturn = () => {
+    history.goBack();
   };
 
   return (
     <StyledButton
       variant='contained'
-      endIcon={<ArrowForwardIcon />}
-      onClick={navigateChecklist}
+      startIcon={<ArrowBack />}
+      onClick={navigateReturn}
     >
-      Iniciar
+      {label}
     </StyledButton>
   );
 };
 
-export default StartButton;
+export default ReturnButton;
