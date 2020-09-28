@@ -22,11 +22,11 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Start: FC = () => {
+const StartButton: FC = () => {
   const history = useHistory();
 
   const navigateChecklist = () => {
-    history.push('/checklist');
+    history.push('/products');
   };
 
   return (
@@ -40,4 +40,4 @@ const Start: FC = () => {
   );
 };
 
-export default Start;
+export default StartButton;

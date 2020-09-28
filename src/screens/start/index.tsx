@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Container, PageWrapper } from '../../components/globals/styles';
 import Logo from './components/logo';
-import Start from './components/startButton';
+import StartButton from './components/startButton';
 
 const Wrapper = styled(PageWrapper)`
   @media ${({ theme: { screenWidth } }) => screenWidth.md} {
@@ -10,17 +10,17 @@ const Wrapper = styled(PageWrapper)`
   }
 `;
 
-const Home: FC = () => {
+const Start: FC = () => {
   return (
     <Wrapper>
       <Container>
         <Logo />
       </Container>
       <Container>
-        <Start />
+        <StartButton />
       </Container>
     </Wrapper>
   );
 };
 
-export default Home;
+export default Start;

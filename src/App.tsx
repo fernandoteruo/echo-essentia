@@ -3,10 +3,15 @@ import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { theme } from './themes';
 import { GlobalStyle, ScreenTransition } from './components/globals/styles';
-import CircularProgress from './components/progress/CircularProgress';
+import CircularProgress from './components/feedback/CircularProgress';
 
-const Home = lazy(() => import('./screens/home'));
-const Checklist = lazy(() => import('./screens/checklist'));
+const Start = lazy(() => import('./screens/start'));
+const Products = lazy(() => import('./screens/products'));
+const Volume = lazy(() => import('./screens/volume'));
+const Payment = lazy(() => import('./screens/payment'));
+const Filling = lazy(() => import('./screens/filling'));
+const ThankYou = lazy(() => import('./screens/thank-you'));
+const Error = lazy(() => import('./screens/error'));
 
 function App() {
   const fallback = (
@@ -23,10 +28,25 @@ function App() {
           <main>
             <Switch>
               <Route exact path='/'>
-                <Home />
+                <Start />
               </Route>
-              <Route path='/checklist'>
-                <Checklist />
+              <Route path='/products'>
+                <Products />
+              </Route>
+              <Route path='/products/:productId/volume'>
+                <Volume />
+              </Route>
+              <Route path='/products/:productId/volume/:volumeId/payment'>
+                <Payment />
+              </Route>
+              <Route path='/products/:productId/volume/:volumeId/filling'>
+                <Filling />
+              </Route>
+              <Route path='/products/:productId/volume/:volumeId/thank-you'>
+                <ThankYou />
+              </Route>
+              <Route path='/products/:productId/volume/:volumeId/error'>
+                <Error />
               </Route>
             </Switch>
           </main>
