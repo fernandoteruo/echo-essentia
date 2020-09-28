@@ -21,9 +21,21 @@ export const PageWrapper = styled.div<WithTheme>`
   justify-content: center;
   padding: ${({ theme: { spacing } }) => spacing.xs};
 
+  @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
+    padding: ${({ theme: { spacing } }) => spacing.sm};
+  }
+
   @media ${({ theme: { screenWidth } }) => screenWidth.md} {
     flex-direction: row;
     padding: ${({ theme: { spacing } }) => spacing.md};
+  }
+
+  @media ${({ theme: { screenWidth } }) => screenWidth.lg} {
+    padding: ${({ theme: { spacing } }) => spacing.lg};
+  }
+
+  @media ${({ theme: { screenWidth } }) => screenWidth.xl} {
+    padding: ${({ theme: { spacing } }) => spacing.xl};
   }
 `;
 
@@ -48,4 +60,13 @@ export const ScreenTransition = styled.div`
       opacity: 1;
     }
   }
+`;
+
+export const Container = styled.div`
+  height: 50vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
