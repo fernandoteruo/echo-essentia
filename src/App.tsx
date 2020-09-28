@@ -6,8 +6,7 @@ import { GlobalStyle, ScreenTransition } from './components/globals/styles';
 import CircularProgress from './components/progress/CircularProgress';
 
 const Home = lazy(() => import('./screens/home'));
-const Preferences = lazy(() => import('./screens/preferences'));
-const Refill = lazy(() => import('./screens/refill'));
+const Landing = lazy(() => import('./screens/landing'));
 
 function App() {
   const fallback = (
@@ -26,11 +25,8 @@ function App() {
               <Route exact path='/'>
                 <Home />
               </Route>
-              <Route path='/preferences'>
-                <Preferences />
-              </Route>
-              <Route path='/refill'>
-                <Refill />
+              <Route path='/landing'>
+                <Landing />
               </Route>
             </Switch>
           </main>

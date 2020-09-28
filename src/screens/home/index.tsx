@@ -1,16 +1,13 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
-
-const Image = styled.img`
-  width: 500px;
-  height: 500px;
-`;
+import logo from '../../resources/svg/icon.svg';
 
 const Home: FC = () => {
   return (
     <PageWrapper>
-      <Image src='' />
+      <div>
+        <img src={logo} alt='Logo Echo Essentia' />
+      </div>
     </PageWrapper>
   );
 };

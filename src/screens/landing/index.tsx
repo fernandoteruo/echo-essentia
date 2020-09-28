@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-const Refill: FC = () => {
+const Landing: FC = () => {
   return (
     <div>
-      REFILL SCREEN
+      LANDING SCREEN
       <Link to='/'>Home</Link>
     </div>
   );
 };
 
-export default Refill;
+export default Landing;
