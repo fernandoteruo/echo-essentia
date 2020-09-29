@@ -6,6 +6,10 @@ const StyledStep = styled(Step)`
   .MuiStepIcon-root.MuiStepIcon-active {
     color: ${(props) => props.theme.colors.primary} !important;
   }
+
+  .MuiStepIcon-root.MuiStepIcon-completed {
+    color: ${(props) => props.theme.colors.primary} !important;
+  }
 `;
 
 export enum Steps {
@@ -14,6 +18,10 @@ export enum Steps {
   PAYMENT,
   FILLING,
 }
+
+const StyledStepper = styled(MuiStepper)`
+  background-color: ${({ theme: { colors } }) => colors.background} !important;
+`;
 
 const getSteps = () => {
   return ['Produto', 'Volume', 'Pagamento', 'Refill'];
@@ -27,13 +35,13 @@ const Stepper: FC<IProps> = ({ activeStep }: IProps) => {
   const steps = getSteps();
 
   return (
-    <MuiStepper activeStep={activeStep} alternativeLabel>
+    <StyledStepper activeStep={activeStep} alternativeLabel>
       {steps.map((label) => (
         <StyledStep key={label}>
           <StepLabel>{label}</StepLabel>
         </StyledStep>
       ))}
-    </MuiStepper>
+    </StyledStepper>
   );
 };
 

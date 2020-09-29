@@ -17,7 +17,7 @@ const Product = styled(ListItem)`
   justify-content: center;
   align-items: center;
   border: 1px solid grey;
-  margin-bottom: 15px;
+  margin-bottom: 15px !important;
   padding: 15px;
   background-color: ${(props) =>
     props.selected ? 'green' : 'white'} !important;
