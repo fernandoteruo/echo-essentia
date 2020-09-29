@@ -23,14 +23,19 @@ const StyledButton = styled(Button)`
 `;
 
 interface IProps {
+  url?: string;
   label: string;
 }
 
-const ReturnButton: FC<IProps> = ({ label }: IProps) => {
+const ReturnButton: FC<IProps> = ({ label, url }: IProps) => {
   const history = useHistory();
 
   const navigateReturn = () => {
-    history.goBack();
+    if (url) {
+      history.push(url);
+    } else {
+      history.goBack();
+    }
   };
 
   return (

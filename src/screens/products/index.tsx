@@ -47,7 +47,8 @@ const Products: FC = () => {
           onSelection={handleSelection}
         />
         <Actions
-          url={`/products/${selectedProduct?.id}/volume`}
+          urlReturn='/'
+          urlNext={`/products/${selectedProduct?.id}/volume`}
           labelNext='Próximo'
           labelReturn='Voltar'
           isDisabled={isNextDisabled}

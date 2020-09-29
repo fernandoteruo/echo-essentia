@@ -11,22 +11,28 @@ const Container = styled.div`
 `;
 
 interface IProps {
-  url: string;
+  urlNext: string;
+  urlReturn?: string;
   labelNext: string;
   labelReturn: string;
   isDisabled?: boolean;
 }
 
 const Actions: FC<IProps> = ({
-  url,
+  urlNext,
+  urlReturn,
   labelNext,
   labelReturn,
   isDisabled,
 }: IProps) => {
   return (
     <Container>
-      <ReturnButton label={labelReturn} />
-      <NavigationButton url={url} label={labelNext} isDisabled={isDisabled} />
+      <ReturnButton label={labelReturn} url={urlReturn} />
+      <NavigationButton
+        url={urlNext}
+        label={labelNext}
+        isDisabled={isDisabled}
+      />
     </Container>
   );
 };
