@@ -14,13 +14,19 @@ interface IProps {
   url: string;
   labelNext: string;
   labelReturn: string;
+  isDisabled?: boolean;
 }
 
-const Actions: FC<IProps> = ({ url, labelNext, labelReturn }: IProps) => {
+const Actions: FC<IProps> = ({
+  url,
+  labelNext,
+  labelReturn,
+  isDisabled,
+}: IProps) => {
   return (
     <Container>
       <ReturnButton label={labelReturn} />
-      <NavigationButton url={url} label={labelNext} />
+      <NavigationButton url={url} label={labelNext} isDisabled={isDisabled} />
     </Container>
   );
 };

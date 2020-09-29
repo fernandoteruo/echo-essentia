@@ -27,27 +27,33 @@ function App() {
         <Suspense fallback={fallback}>
           <main>
             <Switch>
-              <Route exact path='/'>
-                <Start />
-              </Route>
-              <Route path='/products'>
-                <Products />
-              </Route>
-              <Route path='/products/:productId/volume'>
-                <Volume />
-              </Route>
-              <Route path='/products/:productId/volume/:volumeId/payment'>
-                <Payment />
-              </Route>
-              <Route path='/products/:productId/volume/:volumeId/filling'>
-                <Filling />
-              </Route>
-              <Route path='/products/:productId/volume/:volumeId/thank-you'>
-                <ThankYou />
-              </Route>
-              <Route path='/products/:productId/volume/:volumeId/error'>
-                <Error />
-              </Route>
+              <Route exact path='/' component={Start} />
+              <Route exact path='/products' component={Products} />
+              <Route
+                exact
+                path='/products/:productId/volume'
+                component={Volume}
+              />
+              <Route
+                exact
+                path='/products/:productId/volume/:volumeId/payment'
+                component={Payment}
+              />
+              <Route
+                exact
+                path='/products/:productId/volume/:volumeId/filling'
+                component={Filling}
+              />
+              <Route
+                exact
+                path='/products/:productId/volume/:volumeId/thank-you'
+                component={ThankYou}
+              />
+              <Route
+                exact
+                path='/products/:productId/volume/:volumeId/error'
+                component={Error}
+              />
             </Switch>
           </main>
         </Suspense>

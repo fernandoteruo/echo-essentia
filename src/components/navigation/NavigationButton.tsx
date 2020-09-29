@@ -9,6 +9,10 @@ const StyledButton = styled(Button)`
   color: ${(props) => props.theme.colors.white} !important;
   width: 40% !important;
 
+  :disabled {
+    opacity: 0.7;
+  }
+
   @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
   }
 
@@ -25,9 +29,14 @@ const StyledButton = styled(Button)`
 interface IProps {
   url: string;
   label: string;
+  isDisabled?: boolean;
 }
 
-const NavigationButton: FC<IProps> = ({ url, label }: IProps) => {
+const NavigationButton: FC<IProps> = ({
+  url,
+  label,
+  isDisabled = false,
+}: IProps) => {
   const history = useHistory();
 
   const navigateNext = () => {
@@ -39,6 +48,7 @@ const NavigationButton: FC<IProps> = ({ url, label }: IProps) => {
       variant='contained'
       endIcon={<ArrowForwardIcon />}
       onClick={navigateNext}
+      disabled={isDisabled}
     >
       {label}
     </StyledButton>

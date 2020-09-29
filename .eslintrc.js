@@ -24,5 +24,6 @@ module.exports = {
     'object-curly-spacing': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'react/require-default-props': 0,
   },
 };
