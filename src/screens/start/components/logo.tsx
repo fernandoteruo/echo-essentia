@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
-import logo from '../../../resources/svg/logoVertical.svg';
+import logo from '../../../resources/svg/natura/logo.svg';
 
 const StyledImage = styled.img`
   width: 50%;

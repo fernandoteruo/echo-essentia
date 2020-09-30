@@ -2,9 +2,12 @@ import { ThemeProps } from 'styled-components';
 
 enum Colors {
   BACKGROUND = '#F9FAFB',
-  BRAND = '#419a1c',
+  PRIMARY = '#f93',
+  SECONDARY = '#ff9933',
+  BORDER = '#EAEAEA',
   WHITE = '#FFFFFF',
-  GREY = 'rgba(0, 0, 0, 0.26)',
+  BLACK = '#2e3215',
+  CATEGORY = '#b4b4b4',
 }
 
 enum ScreenWidth {
@@ -17,10 +20,12 @@ enum ScreenWidth {
 
 export const theme = {
   colors: {
-    primary: Colors.BRAND,
+    primary: Colors.PRIMARY,
+    secondary: Colors.SECONDARY,
+    border: Colors.BORDER,
     background: Colors.BACKGROUND,
     white: Colors.WHITE,
-    grey: Colors.GREY,
+    black: Colors.BLACK,
   },
   spacing: {
     xs: '4px',
@@ -31,8 +36,10 @@ export const theme = {
     xxl: '48px',
     nax: '64px',
   },
-  shadows: {
-    base: '0px 2px 8px rgba(0, 0, 0, 0.1)',
+  cards: {
+    border: `1px solid ${Colors.BORDER}`,
+    backgroundColor: `${Colors.WHITE}`,
+    categoryColor: `${Colors.CATEGORY}`,
   },
   screenWidth: {
     xs: `(min-width: ${ScreenWidth.XS}px)`,

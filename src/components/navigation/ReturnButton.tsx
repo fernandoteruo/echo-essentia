@@ -5,8 +5,10 @@ import ArrowBack from '@material-ui/icons/ArrowBack';
 import { useHistory } from 'react-router-dom';
 
 const StyledButton = styled(Button)`
-  background-color: ${(props) => props.theme.colors.grey} !important;
-  color: ${(props) => props.theme.colors.grey} !important;
+  background-color: ${(props) => props.theme.colors.white} !important;
+  color: ${(props) => props.theme.colors.black} !important;
+  border-color: ${(props) => props.theme.colors.border} !important;
+  box-shadow: none !important;
   width: 40% !important;
 
   @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
