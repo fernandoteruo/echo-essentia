@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
 import Logo from './components/logo';
 import NavigationButton from '../../components/navigation/NavigationButton';
+import DevelopedBy from './components/DevelopedBy';
 
 const Wrapper = styled(PageWrapper)`
   @media ${({ theme: { screenWidth } }) => screenWidth.md} {
@@ -10,8 +11,8 @@ const Wrapper = styled(PageWrapper)`
   }
 `;
 
-export const Container = styled.div`
-  height: 50vh;
+const Container = styled.div`
+  height: 47vh;
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -32,6 +33,12 @@ export const Container = styled.div`
   }
 `;
 
+const ContainerDevelopedBy = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Start: FC = () => {
   return (
     <Wrapper>
@@ -41,6 +48,10 @@ const Start: FC = () => {
       <Container>
         <NavigationButton url='/products' label='Iniciar' />
       </Container>
+      <ContainerDevelopedBy>
+        Desenvolvido por:
+        <DevelopedBy />
+      </ContainerDevelopedBy>
     </Wrapper>
   );
 };
