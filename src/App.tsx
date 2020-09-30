@@ -27,33 +27,30 @@ function App() {
         <Suspense fallback={fallback}>
           <main>
             <Switch>
-              <Route exact path='/' component={Start} />
-              <Route exact path='/products' component={Products} />
-              <Route
-                exact
-                path='/products/:productId/volume'
-                component={Volume}
-              />
-              <Route
-                exact
-                path='/products/:productId/volume/:volumeId/payment'
-                component={Payment}
-              />
-              <Route
-                exact
-                path='/products/:productId/volume/:volumeId/filling'
-                component={Filling}
-              />
+              <Route exact path='/'>
+                <Start />
+              </Route>
+              <Route exact path='/products'>
+                <Products />
+              </Route>
+              <Route exact path='/products/:productId/volume'>
+                <Volume />
+              </Route>
+              <Route exact path='/products/:productId/volume/:volumeId/payment'>
+                <Payment />
+              </Route>
+              <Route exact path='/products/:productId/volume/:volumeId/filling'>
+                <Filling />
+              </Route>
               <Route
                 exact
                 path='/products/:productId/volume/:volumeId/thank-you'
-                component={ThankYou}
-              />
-              <Route
-                exact
-                path='/products/:productId/volume/:volumeId/error'
-                component={Error}
-              />
+              >
+                <ThankYou />
+              </Route>
+              <Route exact path='/products/:productId/volume/:volumeId/error'>
+                <Error />
+              </Route>
             </Switch>
           </main>
         </Suspense>

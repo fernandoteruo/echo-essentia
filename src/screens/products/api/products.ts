@@ -10,7 +10,7 @@ export interface IProduct {
 export const getProducts: (kioskId: string) => IProduct[] = (kioskId) => {
   const MOCKED_PRODUCTS = [
     {
-      id: 'id1',
+      id: 'product1',
       category: 'KAIAK',
       name: 'Kaiak Oceano Masculino',
       description: 'Sinta a sensação de liberdade de uma onda do mar',
@@ -19,7 +19,7 @@ export const getProducts: (kioskId: string) => IProduct[] = (kioskId) => {
       price: 1234,
     },
     {
-      id: 'id2',
+      id: 'product2',
       category: 'KAIAK',
       name: 'Kaiak Oceano Masculino',
       description:
@@ -29,7 +29,7 @@ export const getProducts: (kioskId: string) => IProduct[] = (kioskId) => {
       price: 4321,
     },
     {
-      id: 'id3',
+      id: 'product3',
       category: 'KAIAK',
       name: 'Kaiak Pulso',
       description: 'Adreanalina que pulsa do seu movimento',

@@ -4,6 +4,7 @@ import { List, ListItem } from '@material-ui/core';
 import { IProduct } from '../api/products';
 import { WithTheme } from '../../../themes';
 import Price from '../../../components/checkout/Price';
+import ChooseButton from '../../../components/checkout/ChooseButton';
 
 interface IProps {
   products: IProduct[];
@@ -62,28 +63,6 @@ const ProductPrice = styled.div`
   text-align: center;
   margin-top: 20px;
   font-size: 11px;
-`;
-
-interface IChooseButtonProps extends WithTheme {
-  isSelected: boolean;
-}
-
-const ChooseButton = styled.div<IChooseButtonProps>`
-  margin-top: auto;
-  text-align: center;
-  padding: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  transition: border color 500ms ease-out;
-  color: ${(props) =>
-    props.isSelected
-      ? props.theme.colors.primary
-      : props.theme.colors.black} !important;
-  border: 1px solid
-    ${(props) =>
-      props.isSelected
-        ? props.theme.colors.primary
-        : props.theme.colors.black} !important;
 `;
 
 const ListProducts: FC<IProps> = ({
