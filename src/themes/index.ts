@@ -1,4 +1,11 @@
 import { ThemeProps } from 'styled-components';
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Open Sans:300,400,600,700,800', 'sans-serif'],
+  },
+});
 
 enum Colors {
   BACKGROUND = '#F9FAFB',
@@ -47,6 +54,9 @@ export const theme = {
     md: `(min-width: ${ScreenWidth.MD}px)`,
     lg: `(min-width: ${ScreenWidth.LG}px)`,
     xl: `(min-width: ${ScreenWidth.XL}px)`,
+  },
+  typography: {
+    regular: 'Open Sans',
   },
 } as const;
 

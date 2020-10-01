@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
 import Logo from './components/logo';
 import NavigationButton from '../../components/navigation/NavigationButton';
-import DevelopedBy from './components/DevelopedBy';
+import DevelopedBy from './components/developedBy';
 
 const Wrapper = styled(PageWrapper)`
   @media ${({ theme: { screenWidth } }) => screenWidth.md} {
@@ -49,7 +49,7 @@ const Start: FC = () => {
         <NavigationButton url='/products' label='Iniciar' />
       </Container>
       <ContainerDevelopedBy>
-        Desenvolvido por:
+        Uma solução:
         <DevelopedBy />
       </ContainerDevelopedBy>
     </Wrapper>

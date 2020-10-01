@@ -6,8 +6,8 @@ export const GlobalStyle = createGlobalStyle<WithTheme>`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: ${(props) => props.theme.typography.regular}
   }
-  
   body {
     margin: 0;
     background: ${({ theme: { colors } }) => colors.background};

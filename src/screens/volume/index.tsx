@@ -47,7 +47,7 @@ const Volume: FC = () => {
           onSelection={handleSelection}
         />
         <Actions
-          urlReturn='/'
+          urlReturn='/products'
           urlNext={`/products/${selectedVolume?.productId}/volume/${selectedVolume?.id}/payment`}
           labelNext='Próximo'
           labelReturn='Voltar'
