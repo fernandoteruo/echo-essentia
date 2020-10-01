@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { List, ListItem } from '@material-ui/core';
+import { List } from '@material-ui/core';
 import { IProduct } from '../api/products';
-import { WithTheme } from '../../../themes';
 import Price from '../../../components/checkout/Price';
 import ChooseButton from '../../../components/checkout/ChooseButton';
+import { Card, CardSection } from '../../../components/checkout/Card';
 
 interface IProps {
   products: IProduct[];
@@ -14,56 +14,37 @@ interface IProps {
 
 const ProductsList = styled(List)``;
 
-const Product = styled(ListItem)<WithTheme>`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: ${(props) => props.theme.cards.border} !important;
-  background-color: ${(props) => props.theme.cards.backgroundColor} !important;
-  padding: 30px !important;
-  width: 250px !important;
-  height: 475px !important;
-  margin-top: 20px !important;
-  transition: border 500ms ease-out;
-
-  &.Mui-selected {
-    border-color: ${(props) => props.theme.colors.primary} !important;
-  }
+const Product = styled(Card)`
+  height: 450px !important;
 `;
 
 const ProductImage = styled.img`
-  height: 180px;
+  width: 100%;
+  max-height: 200px;
 `;
 
-const ProductCategory = styled.div`
-  color: ${(props) => props.theme.cards.categoryColor} !important;
+const ProductCategory = styled(CardSection)`
+  color: #b4b4b4 !important;
   font-size: 12px;
-  margin-top: 10px;
-  text-align: center;
+  font-weight: 300;
+  height: 20px;
 `;
 
-const ProductName = styled.div`
-  color: ${(props) => props.theme.cards.titleColor} !important;
-  font-size: '18px';
-  margin-top: 10px;
-  font-weight: bold;
-  text-align: center;
+const ProductName = styled(CardSection)`
+  font-size: 18px;
+  font-weight: 600;
+  height: 50px;
 `;
 
-const ProductDescription = styled.div`
-  color: #636363;
-  margin-top: 20px;
-  font-size: 12px;
-  width: 90%;
-  text-align: center;
-`;
-
-const ProductPrice = styled.div`
-  text-align: center;
-  margin-top: 20px;
+const ProductPrice = styled(CardSection)`
+  margin-top: 15px;
   font-size: 11px;
+  font-weight: 400;
+  flex-direction: column;
+  height: 60px;
 `;
+
+const ValueFrom = styled(CardSection)``;
 
 const ListProducts: FC<IProps> = ({
   products,
@@ -88,9 +69,8 @@ const ListProducts: FC<IProps> = ({
             <ProductImage src={product.imageUrl} alt={product.name} />
             <ProductCategory>{product.category}</ProductCategory>
             <ProductName>{product.name}</ProductName>
-            <ProductDescription>{product.description}</ProductDescription>
             <ProductPrice>
-              A partir de
+              <ValueFrom> A partir de</ValueFrom>
               <Price value={product.price} />
             </ProductPrice>
             <ChooseButton isSelected={isSelected}>

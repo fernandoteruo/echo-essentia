@@ -14,7 +14,6 @@ enum Colors {
   BORDER = '#EAEAEA',
   WHITE = '#FFFFFF',
   BLACK = '#2e3215',
-  CATEGORY = '#b4b4b4',
 }
 
 enum ScreenWidth {
@@ -42,11 +41,6 @@ export const theme = {
     xl: '32px',
     xxl: '48px',
     nax: '64px',
-  },
-  cards: {
-    border: `1px solid ${Colors.BORDER}`,
-    backgroundColor: `${Colors.WHITE}`,
-    categoryColor: `${Colors.CATEGORY}`,
   },
   screenWidth: {
     xs: `(min-width: ${ScreenWidth.XS}px)`,

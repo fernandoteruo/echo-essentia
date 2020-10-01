@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { List, ListItem } from '@material-ui/core';
+import { List } from '@material-ui/core';
 import ChooseButton from '../../../components/checkout/ChooseButton';
 import { IVolume } from '../api/volume';
-import { WithTheme } from '../../../themes';
 import Price from '../../../components/checkout/Price';
 import { maskedCurrency } from '../../../hooks/formatter';
+import { Card, CardSection } from '../../../components/checkout/Card';
 
 interface IProps {
   volumes: IVolume[];
@@ -15,37 +15,24 @@ interface IProps {
 
 const VolumeList = styled(List)``;
 
-const Volume = styled(ListItem)<WithTheme>`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: ${(props) => props.theme.cards.border} !important;
-  background-color: ${(props) => props.theme.cards.backgroundColor} !important;
-  padding: 30px !important;
-  width: 250px !important;
-  height: 210px !important;
-  margin-top: 20px !important;
-  transition: border 500ms ease-out;
-
-  &.Mui-selected {
-    border-color: ${(props) => props.theme.colors.primary} !important;
-  }
+const Volume = styled(Card)`
+  height: 200px !important;
 `;
 
-const VolumeAmount = styled.div`
-  margin-top: 20px;
+const VolumeAmount = styled(CardSection)`
   font-size: 14px;
+  height: 25px;
+  height: 20px !important;
 `;
 
-const VolumePrice = styled.div`
-  text-align: center;
+const VolumePrice = styled(CardSection)`
   font-size: 18px;
+  height: 40px !important;
 `;
 
-const UnitPrice = styled.div`
-  margin-top: 15px;
+const UnitPrice = styled(CardSection)`
   font-size: 11px;
+  height: 20px !important;
 `;
 
 const ListVolume: FC<IProps> = ({
@@ -73,10 +60,10 @@ const ListVolume: FC<IProps> = ({
             key={volume.id}
             selected={isSelected}
           >
+            <VolumeAmount>{volumeStr}</VolumeAmount>
             <VolumePrice>
               <Price value={volume.price} />
             </VolumePrice>
-            <VolumeAmount>{volumeStr}</VolumeAmount>
             <UnitPrice>{unitPriceDescription}</UnitPrice>
             <ChooseButton isSelected={isSelected}>
               {isSelected ? 'Selecionado' : 'Selectionar'}

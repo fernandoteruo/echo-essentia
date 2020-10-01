@@ -4,7 +4,7 @@ import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
 import Actions from '../../components/checkout/Actions';
 import useGetProducts from './hooks/useProducts';
-import ListProducts from './components/listProducts';
+import ListProducts from './components/ListProducts';
 import { IProduct } from './api/products';
 
 export const Container = styled.div`

@@ -5,7 +5,7 @@ import Stepper, { Steps } from '../../components/checkout/Stepper';
 import useGetAvailableVolumes from './hooks/useVolume';
 import Actions from '../../components/checkout/Actions';
 import { IVolume } from './api/volume';
-import ListVolume from './components/listVolume';
+import ListVolume from './components/ListVolume';
 
 const Container = styled.div`
   display: flex;
