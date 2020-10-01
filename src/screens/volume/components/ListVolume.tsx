@@ -13,8 +13,6 @@ interface IProps {
   onSelection: (volume: IVolume) => void;
 }
 
-const VolumeList = styled(List)``;
-
 const Volume = styled(Card)`
   height: 200px !important;
 `;
@@ -45,7 +43,7 @@ const ListVolume: FC<IProps> = ({
   };
 
   return (
-    <VolumeList>
+    <List>
       {volumes.map((volume) => {
         const isSelected = volume.id === selectedVolume?.id;
         const volumeStr = `Volume: ${volume.amount} ml`;
@@ -71,7 +69,7 @@ const ListVolume: FC<IProps> = ({
           </Volume>
         );
       })}
-    </VolumeList>
+    </List>
   );
 };
 

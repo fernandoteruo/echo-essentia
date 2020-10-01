@@ -12,14 +12,11 @@ interface IProps {
   onSelection: (product: IProduct) => void;
 }
 
-const ProductsList = styled(List)``;
-
 const Product = styled(Card)`
   height: 450px !important;
 `;
 
 const ProductImage = styled.img`
-  width: 100%;
   max-height: 200px;
 `;
 
@@ -56,7 +53,7 @@ const ListProducts: FC<IProps> = ({
   };
 
   return (
-    <ProductsList>
+    <List>
       {products.map((product) => {
         const isSelected = product.id === selectedProduct?.id;
         return (
@@ -70,7 +67,7 @@ const ListProducts: FC<IProps> = ({
             <ProductCategory>{product.category}</ProductCategory>
             <ProductName>{product.name}</ProductName>
             <ProductPrice>
-              <ValueFrom> A partir de</ValueFrom>
+              <ValueFrom>A partir de</ValueFrom>
               <Price value={product.price} />
             </ProductPrice>
             <ChooseButton isSelected={isSelected}>
@@ -79,7 +76,7 @@ const ListProducts: FC<IProps> = ({
           </Product>
         );
       })}
-    </ProductsList>
+    </List>
   );
 };
 
