@@ -13,7 +13,7 @@ const Filling = lazy(() => import('./screens/filling'));
 const ThankYou = lazy(() => import('./screens/thank-you'));
 
 function App() {
-  const fallback = ModalLoading;
+  const fallback = <ModalLoading />;
 
   return (
     <ThemeProvider theme={theme}>

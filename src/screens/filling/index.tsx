@@ -9,11 +9,10 @@ import ModalLoading from '../../components/feedback/ModalLoading';
 const Filling: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
-  let timeoutRef: ReturnType<typeof setTimeout>;
 
   const handleFill = () => {
     setIsLoading(true);
-    timeoutRef = setTimeout(() => {
+    setTimeout(() => {
       setIsLoading(false);
       history.push('/thank-you');
     }, 10000);
@@ -21,7 +20,7 @@ const Filling: FC = () => {
 
   useEffect(() => {
     return () => {
-      clearTimeout(timeoutRef);
+      clearTimeout();
     };
   });
 
