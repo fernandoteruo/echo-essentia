@@ -32,12 +32,14 @@ interface IProps {
   url: string;
   label: string;
   isDisabled?: boolean;
+  shouldShowIcon?: boolean;
 }
 
 const NavigationButton: FC<IProps> = ({
   url,
   label,
   isDisabled = false,
+  shouldShowIcon = true,
 }: IProps) => {
   const history = useHistory();
 
@@ -48,7 +50,7 @@ const NavigationButton: FC<IProps> = ({
   return (
     <StyledButton
       variant='contained'
-      endIcon={<ArrowForwardIcon />}
+      endIcon={shouldShowIcon ? <ArrowForwardIcon /> : null}
       onClick={navigateNext}
       disabled={isDisabled}
     >

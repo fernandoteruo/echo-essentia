@@ -22,6 +22,7 @@ const Details = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 600;
 `;
 
 const PriceContainer = styled.div`

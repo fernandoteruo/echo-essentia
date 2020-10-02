@@ -7,7 +7,7 @@ import useGetProducts from './hooks/useProducts';
 import ListProducts from './components/ListProducts';
 import { IProduct } from './api/products';
 
-export const Container = styled.div`
+export const Container = styled(PageWrapper)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,23 +38,21 @@ const Products: FC = () => {
   };
 
   return (
-    <PageWrapper>
-      <Container>
-        <Stepper activeStep={Steps.PRODUCT} />
-        <ListProducts
-          products={products}
-          selectedProduct={selectedProduct}
-          onSelection={handleSelection}
-        />
-        <Actions
-          urlReturn='/'
-          urlNext={`/products/${selectedProduct?.id}/volume`}
-          labelNext='Próximo'
-          labelReturn='Voltar'
-          isDisabled={isNextDisabled}
-        />
-      </Container>
-    </PageWrapper>
+    <Container>
+      <Stepper activeStep={Steps.PRODUCT} />
+      <ListProducts
+        products={products}
+        selectedProduct={selectedProduct}
+        onSelection={handleSelection}
+      />
+      <Actions
+        urlReturn='/'
+        urlNext={`/products/${selectedProduct?.id}/volume`}
+        labelNext='Próximo'
+        labelReturn='Voltar'
+        isDisabled={isNextDisabled}
+      />
+    </Container>
   );
 };
 

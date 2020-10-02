@@ -1,27 +1,30 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
-import Actions from '../../components/checkout/Actions';
 import usePayment from './hooks/usePayment';
 import Info from './components/Info';
 import PaymentType from './components/PaymentOptions';
+import ReturnButton from '../../components/navigation/ReturnButton';
+import StyledButton from '../../components/checkout/StyledButton';
+import { Container } from '../../components/checkout/Actions';
 
 const Payment: FC = () => {
   const payment = usePayment();
-  const [isNextDisabled] = useState(true);
+
+  const handleClick = () => {};
 
   return (
     <PageWrapper>
       <Stepper activeStep={Steps.PAYMENT} />
       <Info payment={payment} />
       <PaymentType price={payment?.price || 0} />
-      <Actions
-        urlReturn={`/products/${payment?.productId}/volume`}
-        urlNext={`/products/${payment?.productId}/volume/${payment?.volumeId}/filling`}
-        labelNext='Confirmar'
-        labelReturn='Voltar'
-        isDisabled={isNextDisabled}
-      />
+      <Container>
+        <ReturnButton
+          label='Voltar'
+          url={`/products/${payment?.productId}/volume`}
+        />
+        <StyledButton onClick={handleClick}>Pagar</StyledButton>
+      </Container>
     </PageWrapper>
   );
 };

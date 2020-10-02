@@ -1,31 +1,10 @@
 import React, { FC, useState } from 'react';
-import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
 import useGetAvailableVolumes from './hooks/useVolume';
 import Actions from '../../components/checkout/Actions';
 import { IVolume } from './api/volume';
 import ListVolume from './components/ListVolume';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.md} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.lg} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.xl} {
-  }
-`;
 
 const Volume: FC = () => {
   const [isNextDisabled, setIsNextDisabled] = useState(true);
@@ -39,21 +18,19 @@ const Volume: FC = () => {
 
   return (
     <PageWrapper>
-      <Container>
-        <Stepper activeStep={Steps.VOLUME} />
-        <ListVolume
-          volumes={availableVolumes}
-          selectedVolume={selectedVolume}
-          onSelection={handleSelection}
-        />
-        <Actions
-          urlReturn='/products'
-          urlNext={`/products/${selectedVolume?.productId}/volume/${selectedVolume?.id}/payment`}
-          labelNext='Próximo'
-          labelReturn='Voltar'
-          isDisabled={isNextDisabled}
-        />
-      </Container>
+      <Stepper activeStep={Steps.VOLUME} />
+      <ListVolume
+        volumes={availableVolumes}
+        selectedVolume={selectedVolume}
+        onSelection={handleSelection}
+      />
+      <Actions
+        urlReturn='/products'
+        urlNext={`/products/${selectedVolume?.productId}/volume/${selectedVolume?.id}/payment`}
+        labelNext='Próximo'
+        labelReturn='Voltar'
+        isDisabled={isNextDisabled}
+      />
     </PageWrapper>
   );
 };

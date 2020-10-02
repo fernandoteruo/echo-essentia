@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import NavigationButton from '../navigation/NavigationButton';
 import ReturnButton from '../navigation/ReturnButton';
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 15px;
+  padding: 15px;
 `;
 
 interface IProps {
@@ -23,7 +25,7 @@ const Actions: FC<IProps> = ({
   urlReturn,
   labelNext,
   labelReturn,
-  isDisabled,
+  isDisabled = false,
 }: IProps) => {
   return (
     <Container>
@@ -32,6 +34,7 @@ const Actions: FC<IProps> = ({
         url={urlNext}
         label={labelNext}
         isDisabled={isDisabled}
+        shouldShowIcon
       />
     </Container>
   );

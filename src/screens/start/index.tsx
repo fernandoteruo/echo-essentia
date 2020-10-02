@@ -12,7 +12,7 @@ const Wrapper = styled(PageWrapper)`
 `;
 
 const Container = styled.div`
-  height: 47vh;
+  height: 45vh;
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -37,6 +37,7 @@ const ContainerDevelopedBy = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 11px;
 `;
 
 const Start: FC = () => {
