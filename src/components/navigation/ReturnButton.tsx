@@ -7,7 +7,9 @@ import { useHistory } from 'react-router-dom';
 const StyledButton = styled(Button)`
   background-color: ${(props) => props.theme.colors.white} !important;
   color: ${(props) => props.theme.colors.black} !important;
-  border-color: ${(props) => props.theme.colors.border} !important;
+  border-color: ${(props) => props.theme.colors.black} !important;
+  border-width: 1px !important;
+  border-style: solid !important;
   box-shadow: none !important;
   width: 40% !important;
 

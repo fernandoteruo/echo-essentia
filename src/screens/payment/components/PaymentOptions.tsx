@@ -14,10 +14,6 @@ interface IProps {
   price: number;
 }
 
-interface IInput extends WithTheme {
-  isSelected: boolean;
-}
-
 const Container = styled.div`
   padding: 10px;
 `;
@@ -27,9 +23,9 @@ const ChoosePaymentType = styled.div`
   margin-bottom: 20px;
 `;
 
-const Input = styled(FormControlLabel)<IInput>`
+const Input = styled(FormControlLabel)`
   color: ${(props) =>
-    props.isSelected ? props.theme.colors.primary : ''} !important;
+    props.checked ? props.theme.colors.primary : ''} !important;
 `;
 
 const Radio = styled(MuiRadio)<WithTheme>`
@@ -61,19 +57,19 @@ const PaymentOptions: FC<IProps> = ({ price }: IProps) => {
             value={PaymentType.DEBIT}
             control={<Radio />}
             label={labels.DEBIT}
-            isSelected={paymentType === PaymentType.DEBIT}
+            checked={paymentType === PaymentType.DEBIT}
           />
           <Input
             value={PaymentType.CREDIT}
             control={<Radio />}
             label={labels.CREDIT}
-            isSelected={paymentType === PaymentType.CREDIT}
+            checked={paymentType === PaymentType.CREDIT}
           />
           <Input
             value={PaymentType.CREDIT_INSTALLS_2}
             control={<Radio />}
             label={labels.CREDIT_INSTALLS_2}
-            isSelected={paymentType === PaymentType.CREDIT_INSTALLS_2}
+            checked={paymentType === PaymentType.CREDIT_INSTALLS_2}
           />
         </RadioGroup>
       </FormControl>
