@@ -2,8 +2,8 @@ import React, { lazy, Suspense } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { theme } from './themes';
-import { GlobalStyle, ScreenTransition } from './components/globals/styles';
-import CircularProgress from './components/feedback/CircularProgress';
+import { GlobalStyle } from './components/globals/styles';
+import ModalLoading from './components/feedback/ModalLoading';
 
 const Start = lazy(() => import('./screens/start'));
 const Products = lazy(() => import('./screens/products'));
@@ -11,14 +11,9 @@ const Volume = lazy(() => import('./screens/volume'));
 const Payment = lazy(() => import('./screens/payment'));
 const Filling = lazy(() => import('./screens/filling'));
 const ThankYou = lazy(() => import('./screens/thank-you'));
-const Error = lazy(() => import('./screens/error'));
 
 function App() {
-  const fallback = (
-    <ScreenTransition>
-      <CircularProgress />
-    </ScreenTransition>
-  );
+  const fallback = ModalLoading;
 
   return (
     <ThemeProvider theme={theme}>
@@ -42,14 +37,8 @@ function App() {
               <Route exact path='/products/:productId/volume/:volumeId/filling'>
                 <Filling />
               </Route>
-              <Route
-                exact
-                path='/products/:productId/volume/:volumeId/thank-you'
-              >
+              <Route exact path='/thank-you'>
                 <ThankYou />
-              </Route>
-              <Route exact path='/products/:productId/volume/:volumeId/error'>
-                <Error />
               </Route>
             </Switch>
           </main>

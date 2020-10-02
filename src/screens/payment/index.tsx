@@ -4,7 +4,7 @@ import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
 import usePayment from './hooks/usePayment';
 import Info from './components/Info';
-import PaymentType from './components/PaymentOptions';
+import PaymentType from './components/Options';
 import ReturnButton from '../../components/navigation/ReturnButton';
 import StyledButton from '../../components/checkout/StyledButton';
 import { Container } from '../../components/checkout/Actions';

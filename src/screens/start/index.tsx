@@ -5,12 +5,6 @@ import Logo from './components/Logo';
 import NavigationButton from '../../components/navigation/NavigationButton';
 import DevelopedBy from './components/DevelopedBy';
 
-const Wrapper = styled(PageWrapper)`
-  @media ${({ theme: { screenWidth } }) => screenWidth.md} {
-    flex-direction: column;
-  }
-`;
-
 const Container = styled.div`
   height: 45vh;
   width: 100vw;
@@ -42,7 +36,7 @@ const ContainerDevelopedBy = styled.div`
 
 const Start: FC = () => {
   return (
-    <Wrapper>
+    <PageWrapper>
       <Container>
         <Logo />
       </Container>
@@ -53,7 +47,7 @@ const Start: FC = () => {
         Uma solução:
         <DevelopedBy />
       </ContainerDevelopedBy>
-    </Wrapper>
+    </PageWrapper>
   );
 };
 

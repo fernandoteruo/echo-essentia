@@ -34,7 +34,7 @@ const Radio = styled(MuiRadio)<WithTheme>`
   }
 `;
 
-const PaymentOptions: FC<IProps> = ({ price }: IProps) => {
+const Options: FC<IProps> = ({ price }: IProps) => {
   const [paymentType, setPaymentType] = useState<string>(PaymentType.DEBIT);
   const labels = usePaymentTypeLabel(price);
 
@@ -77,4 +77,4 @@ const PaymentOptions: FC<IProps> = ({ price }: IProps) => {
   );
 };
 
-export default PaymentOptions;
+export default Options;

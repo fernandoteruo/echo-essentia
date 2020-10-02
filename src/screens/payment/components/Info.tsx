@@ -8,10 +8,6 @@ interface IProps {
   payment: IPayment | null;
 }
 
-const Container = styled(PageWrapper)`
-  width: 250px;
-`;
-
 const ProductImage = styled.img`
   width: 100%;
 `;
@@ -40,16 +36,16 @@ const PriceDescription = styled.div`
 
 const Info: FC<IProps> = ({ payment }: IProps) => {
   return (
-    <Container>
+    <PageWrapper>
       <ProductImage src={payment?.productImage} alt={payment?.productName} />
       <Details>
-        {payment?.productName} / {payment?.volumeName}
+        {payment?.productName} /{payment?.volumeName}
       </Details>
       <PriceContainer>
         <PriceDescription>Total à vista:</PriceDescription>
         <Price value={payment?.price || 0} />
       </PriceContainer>
-    </Container>
+    </PageWrapper>
   );
 };
 
