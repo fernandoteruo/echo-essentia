@@ -29,7 +29,7 @@ const Filling: FC = () => {
       {isLoading ? <ModalLoading /> : null}
       <Stepper activeStep={Steps.FILLING} />
       <Instructions />
-      <StyledButton onClick={handleFill}>Pagar</StyledButton>
+      <StyledButton onClick={handleFill}>Encher</StyledButton>
     </PageWrapper>
   );
 };
