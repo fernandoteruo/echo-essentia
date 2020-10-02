@@ -23,7 +23,7 @@ const Filling: FC = () => {
     return () => {
       clearTimeout(timeoutRef);
     };
-  }, []);
+  });
 
   return (
     <PageWrapper>

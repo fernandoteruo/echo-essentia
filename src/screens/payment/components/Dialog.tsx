@@ -58,7 +58,7 @@ const PaymentDialog: FC<IProps> = ({ onClose }: IProps) => {
     return () => {
       clearTimeout();
     };
-  }, []);
+  });
 
   const handleCancel = () => {
     setIsOpen(false);
