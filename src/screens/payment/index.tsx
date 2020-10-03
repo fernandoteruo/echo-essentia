@@ -1,5 +1,7 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import MuiBackdrop from '@material-ui/core/Backdrop';
+import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
 import Info from './components/Info';
@@ -13,9 +15,14 @@ import { OrderContext } from '../../context/Order';
 
 const TIMEOUT_REDIRECT = 3000;
 
+const Backdrop = styled(MuiBackdrop)`
+  z-index: 1 !important;
+`;
+
 const Payment: FC = () => {
   const snackbar = useContext(SnackbarContext);
   const order = useContext(OrderContext);
+  const [isDisabled, setIsDisabled] = useState(true);
   const [shouldShowPaymentDialog, setsShouldShowPaymentDialog] = useState(
     false,
   );
@@ -25,6 +32,7 @@ const Payment: FC = () => {
 
   const handleClose = (isPaymentSuccessful: boolean) => {
     setsShouldShowPaymentDialog(false);
+    setIsDisabled(isPaymentSuccessful);
     const snackbarMessage = isPaymentSuccessful
       ? 'Pagamento efetuado com sucesso'
       : 'Erro ao efetuar pagamento';
@@ -52,13 +60,16 @@ const Payment: FC = () => {
 
   return (
     <PageWrapper>
+      <Backdrop open={isDisabled} />
       <Stepper activeStep={Steps.PAYMENT} />
       <Info price={order?.volume?.price || 0} />
       <Options price={order?.volume?.price || 0} />
       {shouldShowPaymentDialog ? <PaymentDialog onClose={handleClose} /> : null}
       <Container>
         <ReturnButton label='Voltar' url='/volumes' />
-        <PrimaryButton onClick={handleOpen}>Pagar</PrimaryButton>
+        <PrimaryButton onClick={handleOpen} disabled={isDisabled}>
+          Pagar
+        </PrimaryButton>
       </Container>
     </PageWrapper>
   );
