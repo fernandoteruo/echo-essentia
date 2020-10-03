@@ -7,7 +7,7 @@ import Button, { Icon, Label } from '../form/Button';
 const StyledButton = styled(Button)`
   background-color: ${(props) => props.theme.colors.white} !important;
   color: ${(props) => props.theme.colors.black} !important;
-  border: 1px solid ${(props) => props.theme.colors.black} !important;
+  border: 1px solid ${(props) => props.theme.colors.border} !important;
 `;
 
 interface IProps {
