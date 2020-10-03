@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { List } from '@material-ui/core';
 import ChooseButton from '../../../components/checkout/ChooseButton';
 import { IVolume } from '../api/volume';
 import Price from '../../../components/checkout/Price';
 import { maskedCurrency } from '../../../hooks/formatter';
 import { Card, CardSection } from '../../../components/checkout/Card';
+import List from '../../../components/checkout/List';
 
 interface IProps {
   volumes: IVolume[];
@@ -15,6 +15,11 @@ interface IProps {
 
 const Volume = styled(Card)`
   height: 200px !important;
+
+  @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
 `;
 
 const VolumeAmount = styled(CardSection)`
@@ -64,7 +69,7 @@ const ListVolume: FC<IProps> = ({
             </VolumePrice>
             <UnitPrice>{unitPriceDescription}</UnitPrice>
             <ChooseButton isSelected={isSelected}>
-              {isSelected ? 'Selecionado' : 'Selectionar'}
+              {isSelected ? 'Selecionado' : 'Selecionar'}
             </ChooseButton>
           </Volume>
         );

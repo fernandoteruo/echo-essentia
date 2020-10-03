@@ -1,29 +1,16 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { List as MuiList } from '@material-ui/core';
 import { IProduct } from '../api/products';
 import Price from '../../../components/checkout/Price';
 import ChooseButton from '../../../components/checkout/ChooseButton';
 import { Card, CardSection } from '../../../components/checkout/Card';
+import List from '../../../components/checkout/List';
 
 interface IProps {
   products: IProduct[];
   selectedProduct?: IProduct | null;
   onSelection: (product: IProduct) => void;
 }
-
-const List = styled(MuiList)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 90%;
-  }
-`;
 
 const Product = styled(Card)`
   height: 450px !important;
