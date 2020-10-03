@@ -1,28 +1,17 @@
-import React, { FC, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { FC } from 'react';
 import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
 import Instructions from './components/Instructions';
 import ModalLoading from '../../components/feedback/ModalLoading';
 import { PrimaryButton } from '../../components/form/Button';
+import useFilling from './hooks/useFilling';
 
 const Filling: FC = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const history = useHistory();
+  const { isLoading, tryFill } = useFilling();
 
   const handleFill = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      history.push('/thank-you');
-    }, 5000);
+    tryFill();
   };
-
-  useEffect(() => {
-    return () => {
-      clearTimeout();
-    };
-  });
 
   return (
     <PageWrapper>

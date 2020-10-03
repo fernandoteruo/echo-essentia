@@ -1,11 +1,12 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { apiUrl, apiKey } from '../config';
+import { apiUrl, tenant, userToken } from '../config';
 
 const config: AxiosRequestConfig = {
   baseURL: apiUrl,
   timeout: 10000,
   headers: {
-    apiKey,
+    Authorization: `Bearer ${userToken}`,
+    'X-Tenant': tenant,
     'Content-Type': 'application/json',
   },
 };
