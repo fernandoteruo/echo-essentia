@@ -6,6 +6,7 @@ import Actions from '../../components/checkout/Actions';
 import useGetProducts from './hooks/useProducts';
 import ListProducts from './components/ListProducts';
 import { IProduct } from './api/products';
+import AppBar from '../../components/checkout/AppBar';
 
 export const Container = styled(PageWrapper)`
   display: flex;
@@ -39,6 +40,7 @@ const Products: FC = () => {
 
   return (
     <Container>
+      <AppBar />
       <Stepper activeStep={Steps.PRODUCT} />
       <ListProducts
         products={products}

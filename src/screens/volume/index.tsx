@@ -5,6 +5,7 @@ import useGetAvailableVolumes from './hooks/useVolume';
 import Actions from '../../components/checkout/Actions';
 import { IVolume } from './api/volume';
 import ListVolume from './components/ListVolume';
+import AppBar from '../../components/checkout/AppBar';
 
 const Volume: FC = () => {
   const [isNextDisabled, setIsNextDisabled] = useState(true);
@@ -18,6 +19,7 @@ const Volume: FC = () => {
 
   return (
     <PageWrapper>
+      <AppBar />
       <Stepper activeStep={Steps.VOLUME} />
       <ListVolume
         volumes={availableVolumes}

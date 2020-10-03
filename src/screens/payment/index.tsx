@@ -10,6 +10,7 @@ import { Container } from '../../components/checkout/Actions';
 import PaymentDialog from './components/Dialog';
 import { PrimaryButton } from '../../components/form/Button';
 import { Severity, SnackbarContext } from '../../context/Snackbar';
+import AppBar from '../../components/checkout/AppBar';
 
 const TIMEOUT_REDIRECT = 3000;
 
@@ -54,6 +55,7 @@ const Payment: FC = () => {
 
   return (
     <PageWrapper>
+      <AppBar />
       <Stepper activeStep={Steps.PAYMENT} />
       <Info payment={payment} />
       <PaymentType price={payment?.price || 0} />

@@ -5,6 +5,7 @@ import { PageWrapper } from '../../components/globals/styles';
 import { PrimaryButton } from '../../components/form/Button';
 import useLogin from './hooks/useLogin';
 import ModalLoading from '../../components/feedback/ModalLoading';
+import AppBar from '../../components/checkout/AppBar';
 
 const Form = styled.form`
   display: flex;
@@ -29,6 +30,7 @@ const Admin: FC = () => {
   return (
     <PageWrapper>
       {login.isLoading ? <ModalLoading /> : null}
+      <AppBar />
       <Form noValidate autoComplete='off' onSubmit={login.onSubmit}>
         <Input
           id={login.emailInput.id}
