@@ -1,10 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { apiUrl, tenant, userToken } from '../config';
 
-enum ApiStatus {
-  UNAUTHORISED = 401,
-}
-
 const anonApiConfig: AxiosRequestConfig = {
   baseURL: apiUrl,
   timeout: 10000,
@@ -29,12 +25,8 @@ const responseInterceptor = (response: AxiosResponse) => {
 
 const errorInterceptor = (error: any) => {
   const {
-    response: { status, statusText },
+    response: { statusText },
   } = error;
-
-  if (status === ApiStatus.UNAUTHORISED) {
-    window.location.assign('/login');
-  }
 
   throw new Error(statusText);
 };

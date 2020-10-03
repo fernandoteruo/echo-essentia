@@ -34,8 +34,13 @@ export const SnackbarContext = createContext<IContext | null>(null);
 const SnackbarWrapper: FC<IProps> = ({ children }: IProps) => {
   const [severity, setSeverity] = useState<Severity>(Severity.ERROR);
   const [message, setMessage] = useState<string | null>(null);
-  const [duration, setDuration] = useState<number>(0);
+  const [duration, setDuration] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    setMessage(null);
+  };
 
   const context: IContext = {
     severity: useCallback((value: Severity) => setSeverity(value), []),
@@ -47,7 +52,11 @@ const SnackbarWrapper: FC<IProps> = ({ children }: IProps) => {
   return (
     <SnackbarContext.Provider value={context}>
       {children}
-      <MuiSnackbar open={isVisible} autoHideDuration={duration}>
+      <MuiSnackbar
+        open={isVisible}
+        autoHideDuration={duration}
+        onClose={handleClose}
+      >
         <Alert severity={severity} elevation={6} variant='filled'>
           {message}
         </Alert>
