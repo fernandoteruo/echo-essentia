@@ -12,6 +12,10 @@ const Button = styled.button`
   max-width: 360px;
   width: 45%;
 
+  &:focus {
+    outline: none;
+  }
+
   @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
     width: 30%;
     font-size: 1.35em;

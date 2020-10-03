@@ -15,7 +15,7 @@ const Filling: FC = () => {
     setTimeout(() => {
       setIsLoading(false);
       history.push('/thank-you');
-    }, 10000);
+    }, 5000);
   };
 
   useEffect(() => {

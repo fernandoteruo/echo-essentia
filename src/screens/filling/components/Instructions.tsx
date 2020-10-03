@@ -3,8 +3,8 @@ import { List, ListItem, ListItemText } from '@material-ui/core';
 import styled from 'styled-components';
 
 const FILLING_INSTRUCTIONS = [
-  'Coloque seu recipiente na abertura ao lado',
-  'Feche a tampa',
+  'Coloque seu frasco na abertura ao lado',
+  'Feche a tampa da abertura',
   'Pressione o botao "Encher"',
   'Aguarde seu novo perfume',
 ];

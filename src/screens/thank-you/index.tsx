@@ -11,27 +11,19 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 5px;
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.md} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.lg} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.xl} {
-  }
 `;
 
 const Text = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
   padding: 30px;
   text-align: center;
+  font-size: 1em;
+
+  @media ${({ theme: { screenWidth } }) => screenWidth.md} {
+    font-size: 1.25em;
+  }
 `;
 
 const ThankYou: FC = () => {

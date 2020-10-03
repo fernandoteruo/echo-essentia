@@ -4,20 +4,21 @@ import {
   CircularProgress as MuiCircularProgress,
   Dialog,
 } from '@material-ui/core';
+import { WithTheme } from '../../themes';
 
 const LoadingContainer = styled(Dialog)`
   .MuiPaper-root {
     background-color: transparent !important;
     box-shadow: none !important;
+    overflow: hidden;
   }
 `;
 
-const CircularProgress = styled(MuiCircularProgress)`
+const CircularProgress = styled(MuiCircularProgress)<WithTheme>`
   background-color: transparent !important;
 
   &.MuiCircularProgress-colorPrimary {
     color: ${(props) => props.theme.colors.primary};
-    background-color: transparent !important;
   }
 `;
 

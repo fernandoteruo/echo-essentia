@@ -8,20 +8,44 @@ import {
   ListItemText,
 } from '@material-ui/core';
 import styled from 'styled-components';
+import {
+  CreditCard,
+  Dialpad,
+  SvgIconComponent,
+  Timer,
+} from '@material-ui/icons';
 
 interface IProps {
   onClose: (shouldRedirect: boolean) => void;
 }
 
-const PAYMENT_INSTRUCTIONS = [
-  'Insira seu cartao na maquina abaixo',
-  'Siga as instrucoes para inserir a senha',
-  'Aguarde a confirmacao do pagamento',
+interface IPaymentInstruction {
+  label: string;
+  Icon: SvgIconComponent;
+}
+
+const PAYMENT_INSTRUCTIONS: IPaymentInstruction[] = [
+  {
+    label: 'Insira seu cartão na máquina abaixo',
+    Icon: CreditCard,
+  },
+  {
+    label: 'Siga as instruções para inserir a senha',
+    Icon: Dialpad,
+  },
+  {
+    label: 'Aguarde a confirmação do pagamento',
+    Icon: Timer,
+  },
 ];
 
 const Container = styled(Dialog)`
   .MuiDialog-paper {
     align-items: center;
+
+    @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
+      padding: 35px;
+    }
   }
 `;
 
@@ -33,6 +57,8 @@ const Title = styled(DialogTitle)`
 `;
 
 const Text = styled(ListItemText)`
+  margin-left: 15px;
+
   .MuiTypography-body1 {
     font-family: 'Open Sans';
   }
@@ -69,10 +95,11 @@ const PaymentDialog: FC<IProps> = ({ onClose }: IProps) => {
     <Container open={isOpen} disableBackdropClick disableEscapeKeyDown>
       <Title>Efetue o pagamento</Title>
       <List>
-        {PAYMENT_INSTRUCTIONS.map((instruction) => {
+        {PAYMENT_INSTRUCTIONS.map(({ label, Icon }) => {
           return (
-            <ListItem key={instruction}>
-              <Text primary={instruction} />
+            <ListItem key={label}>
+              <Icon />
+              <Text primary={label} />
             </ListItem>
           );
         })}

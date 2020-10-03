@@ -26,10 +26,4 @@ export const PageWrapper = styled.div<WithTheme>`
     margin-left: auto;
     margin-right: auto;
   }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.lg} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.xl} {
-  }
 `;
