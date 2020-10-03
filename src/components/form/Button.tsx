@@ -16,6 +16,10 @@ const Button = styled.button`
     outline: none;
   }
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
     width: 30%;
     font-size: 1.35em;
