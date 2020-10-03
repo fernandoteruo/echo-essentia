@@ -16,7 +16,7 @@ import {
 } from '@material-ui/icons';
 
 interface IProps {
-  onClose: (shouldRedirect: boolean) => void;
+  onClose: (isPaymentSuccessful: boolean) => void;
 }
 
 interface IPaymentInstruction {

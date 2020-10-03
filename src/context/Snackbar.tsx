@@ -1,6 +1,8 @@
-import React, { createContext, FC, useState } from 'react';
+import React, { createContext, FC, useCallback, useState } from 'react';
 import MuiSnackbar from '@material-ui/core/Snackbar';
-import Alert from '@material-ui/lab/Alert';
+import MuiAlert from '@material-ui/lab/Alert';
+import styled from 'styled-components';
+import { WithTheme } from '../themes';
 
 export enum Severity {
   ERROR = 'error',
@@ -9,18 +11,25 @@ export enum Severity {
   SUCCESS = 'success',
 }
 
+const Alert = styled(MuiAlert)<WithTheme>`
+  @media ${({ theme: { screenWidth } }) => screenWidth.md} {
+    padding: 10px 20px !important;
+    font-size: 1em !important;
+  }
+`;
+
 interface IProps {
   children: any;
 }
 
 interface IContext {
-  setSeverity: (severity: Severity) => void;
-  setDuration: (duration: number) => void;
-  setMessage: (message: string) => void;
-  setIsVisible: (isVisible: boolean) => void;
+  severity: (severity: Severity) => void;
+  duration: (duration: number) => void;
+  message: (message: string) => void;
+  visibility: (isVisible: boolean) => void;
 }
 
-const SnackbarContext = createContext<IContext | null>(null);
+export const SnackbarContext = createContext<IContext | null>(null);
 
 const SnackbarWrapper: FC<IProps> = ({ children }: IProps) => {
   const [severity, setSeverity] = useState<Severity>(Severity.ERROR);
@@ -29,17 +38,19 @@ const SnackbarWrapper: FC<IProps> = ({ children }: IProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const context: IContext = {
-    setSeverity,
-    setDuration,
-    setIsVisible,
-    setMessage,
+    severity: useCallback((value: Severity) => setSeverity(value), []),
+    duration: useCallback((value: number) => setDuration(value), []),
+    message: useCallback((value: string) => setMessage(value), []),
+    visibility: useCallback((value: boolean) => setIsVisible(value), []),
   };
 
   return (
     <SnackbarContext.Provider value={context}>
       {children}
       <MuiSnackbar open={isVisible} autoHideDuration={duration}>
-        <Alert severity={severity}>{message}</Alert>
+        <Alert severity={severity} elevation={6} variant='filled'>
+          {message}
+        </Alert>
       </MuiSnackbar>
     </SnackbarContext.Provider>
   );

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
@@ -9,22 +9,53 @@ import ReturnButton from '../../components/navigation/ReturnButton';
 import { Container } from '../../components/checkout/Actions';
 import PaymentDialog from './components/Dialog';
 import { PrimaryButton } from '../../components/form/Button';
+import { Severity, SnackbarContext } from '../../context/Snackbar';
+
+const TIMEOUT_REDIRECT = 3000;
 
 const Payment: FC = () => {
   const payment = usePayment();
-  const [shouldShowPaymentDialog, setShouldSHowPaymentDialog] = useState(false);
+  const snackbar = useContext(SnackbarContext);
+  const [shouldShowPaymentDialog, setsShouldShowPaymentDialog] = useState(
+    false,
+  );
   const history = useHistory();
 
-  const handleOpen = () => setShouldSHowPaymentDialog(true);
+  useEffect(() => {
+    snackbar?.message('Pagamento efetuado com sucesso');
+    snackbar?.visibility(true);
+  }, [snackbar]);
 
-  const handleClose = (shouldRedirect: boolean) => {
-    setShouldSHowPaymentDialog(false);
-    if (shouldRedirect) {
-      history.push(
-        `/products/${payment?.productId}/volume/${payment?.volumeId}/filling`,
-      );
+  const handleOpen = () => setsShouldShowPaymentDialog(true);
+
+  const handleClose = (isPaymentSuccessful: boolean) => {
+    setsShouldShowPaymentDialog(false);
+    const snackbarMessage = isPaymentSuccessful
+      ? 'Pagamento efetuado com sucesso'
+      : 'Erro ao efetuar pagamento';
+    const snackbarSeverity = isPaymentSuccessful
+      ? Severity.SUCCESS
+      : Severity.ERROR;
+    snackbar?.message(snackbarMessage);
+    snackbar?.severity(snackbarSeverity);
+    snackbar?.duration(TIMEOUT_REDIRECT);
+    snackbar?.visibility(true);
+
+    if (isPaymentSuccessful) {
+      setTimeout(() => {
+        snackbar?.visibility(false);
+        history.push(
+          `/products/${payment?.productId}/volume/${payment?.volumeId}/filling`,
+        );
+      }, TIMEOUT_REDIRECT);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      clearTimeout();
+    };
+  });
 
   return (
     <PageWrapper>
