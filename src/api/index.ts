@@ -33,8 +33,7 @@ const errorInterceptor = (error: any) => {
   } = error;
 
   if (status === ApiStatus.UNAUTHORISED) {
-    // eslint-disable-next-line no-restricted-globals
-    location.assign('/admin');
+    window.location.assign('/admin');
   }
 
   throw new Error(statusText);

@@ -26,6 +26,7 @@ const useLogin: () => IUseLogin = () => {
     try {
       const auth = await login({ email, password });
       localStorage.setItem('userToken', auth.access_token);
+      window.location.href = '/';
     } catch (error) {
       console.log(error);
     }
