@@ -6,15 +6,15 @@ const StyledImage = styled.img`
   width: 50%;
 
   @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
+    width: 35%;
   }
 
   @media ${({ theme: { screenWidth } }) => screenWidth.md} {
+    width: 25%;
   }
 
   @media ${({ theme: { screenWidth } }) => screenWidth.lg} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.xl} {
+    width: 20%;
   }
 `;
 

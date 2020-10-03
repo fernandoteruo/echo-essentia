@@ -9,7 +9,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 15px;
-  padding: 15px;
+  padding: 10px;
 `;
 
 interface IProps {

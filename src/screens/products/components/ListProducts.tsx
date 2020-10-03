@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { List } from '@material-ui/core';
+import { List as MuiList } from '@material-ui/core';
 import { IProduct } from '../api/products';
 import Price from '../../../components/checkout/Price';
 import ChooseButton from '../../../components/checkout/ChooseButton';
@@ -12,8 +12,26 @@ interface IProps {
   onSelection: (product: IProduct) => void;
 }
 
+const List = styled(MuiList)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+  }
+`;
+
 const Product = styled(Card)`
   height: 450px !important;
+
+  @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
 `;
 
 const ProductImage = styled.img`
@@ -71,7 +89,7 @@ const ListProducts: FC<IProps> = ({
               <Price value={product.price} />
             </ProductPrice>
             <ChooseButton isSelected={isSelected}>
-              {isSelected ? 'Selecionado' : 'Selectionar'}
+              {isSelected ? 'Selecionado' : 'Selecionar'}
             </ChooseButton>
           </Product>
         );

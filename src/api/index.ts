@@ -19,9 +19,8 @@ const responseInterceptor = (response: AxiosResponse) => {
 const errorInterceptor = (error: any) => {
   const {
     response: { statusText },
-    message,
   } = error;
-  throw new Error(statusText || message);
+  throw new Error(statusText);
 };
 
 api.interceptors.response.use(responseInterceptor, errorInterceptor);

@@ -7,6 +7,10 @@ const StyledStep = styled(Step)`
     color: ${(props) => props.theme.colors.primary} !important;
   }
 
+  .MuiStepConnector-root {
+    display: none;
+  }
+
   .MuiStepIcon-root.MuiStepIcon-completed {
     color: ${(props) => props.theme.colors.primary} !important;
   }

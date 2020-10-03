@@ -21,10 +21,10 @@ export const PageWrapper = styled.div<WithTheme>`
   align-items: center;
   padding: ${({ theme: { spacing } }) => spacing.xs};
 
-  @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
-  }
-
   @media ${({ theme: { screenWidth } }) => screenWidth.md} {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @media ${({ theme: { screenWidth } }) => screenWidth.lg} {
