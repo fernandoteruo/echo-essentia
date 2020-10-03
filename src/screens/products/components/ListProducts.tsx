@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { IProduct } from '../api/products';
 import Price from '../../../components/checkout/Price';
 import ChooseButton from '../../../components/checkout/ChooseButton';
 import { Card, CardSection } from '../../../components/checkout/Card';
 import List from '../../../components/checkout/List';
+import { IProduct } from '../../../context/Checkout';
 
 interface IProps {
   products: IProduct[];

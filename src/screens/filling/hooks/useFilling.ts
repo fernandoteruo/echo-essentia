@@ -33,9 +33,9 @@ const useFilling: () => IFilling = () => {
     } catch (e) {
       console.log(e);
       setIsLoading(false);
-      snackbar?.severity(Severity.ERROR);
-      snackbar?.message('Erro ao tentar recarregar');
-      snackbar?.visibility(true);
+      snackbar?.setSeverity(Severity.ERROR);
+      snackbar?.setMessage('Erro ao tentar recarregar');
+      snackbar?.setIsVisible(true);
     }
   };
 

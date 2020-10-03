@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import ChooseButton from '../../../components/checkout/ChooseButton';
-import { IVolume } from '../api/volume';
 import Price from '../../../components/checkout/Price';
 import { maskedCurrency } from '../../../hooks/formatter';
 import { Card, CardSection } from '../../../components/checkout/Card';
 import List from '../../../components/checkout/List';
+import { IVolume } from '../../../context/Checkout';
 
 interface IProps {
   volumes: IVolume[];

@@ -1,4 +1,4 @@
-import React, { createContext, FC, useCallback, useState } from 'react';
+import React, { createContext, FC, useState } from 'react';
 import MuiSnackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import styled from 'styled-components';
@@ -23,10 +23,10 @@ interface IProps {
 }
 
 interface IContext {
-  severity: (severity: Severity) => void;
-  duration: (duration: number) => void;
-  message: (message: string) => void;
-  visibility: (isVisible: boolean) => void;
+  setSeverity: (severity: Severity) => void;
+  setDuration: (duration: number) => void;
+  setMessage: (message: string) => void;
+  setIsVisible: (isVisible: boolean) => void;
 }
 
 export const SnackbarContext = createContext<IContext | null>(null);
@@ -43,10 +43,10 @@ const SnackbarWrapper: FC<IProps> = ({ children }: IProps) => {
   };
 
   const context: IContext = {
-    severity: useCallback((value: Severity) => setSeverity(value), []),
-    duration: useCallback((value: number) => setDuration(value), []),
-    message: useCallback((value: string) => setMessage(value), []),
-    visibility: useCallback((value: boolean) => setIsVisible(value), []),
+    setSeverity,
+    setDuration,
+    setMessage,
+    setIsVisible,
   };
 
   return (

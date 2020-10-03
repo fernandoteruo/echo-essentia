@@ -32,14 +32,14 @@ const Payment: FC = () => {
     const snackbarSeverity = isPaymentSuccessful
       ? Severity.SUCCESS
       : Severity.ERROR;
-    snackbar?.message(snackbarMessage);
-    snackbar?.severity(snackbarSeverity);
-    snackbar?.duration(TIMEOUT_REDIRECT);
-    snackbar?.visibility(true);
+    snackbar?.setMessage(snackbarMessage);
+    snackbar?.setSeverity(snackbarSeverity);
+    snackbar?.setDuration(TIMEOUT_REDIRECT);
+    snackbar?.setIsVisible(true);
 
     if (isPaymentSuccessful) {
       setTimeout(() => {
-        snackbar?.visibility(false);
+        snackbar?.setIsVisible(false);
         history.push(
           `/products/${payment?.productId}/volume/${payment?.volumeId}/filling`,
         );
