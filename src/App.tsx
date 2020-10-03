@@ -15,7 +15,6 @@ const Admin = lazy(() => import('./screens/admin'));
 
 function App() {
   const fallback = <ModalLoading />;
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />

@@ -21,7 +21,11 @@ const useFilling: () => IFilling = () => {
           Status: true,
         },
       };
-      await fillRecipient('a6aef30e-2145-41af-8100-79259bad0b59', data);
+      const response = await fillRecipient(
+        'a6aef30e-2145-41af-8100-79259bad0b59',
+        data,
+      );
+      console.log(response);
       setIsLoading(true);
     } catch (e) {
       console.log(e);
