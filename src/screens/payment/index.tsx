@@ -21,11 +21,6 @@ const Payment: FC = () => {
   );
   const history = useHistory();
 
-  useEffect(() => {
-    snackbar?.message('Pagamento efetuado com sucesso');
-    snackbar?.visibility(true);
-  }, [snackbar]);
-
   const handleOpen = () => setsShouldShowPaymentDialog(true);
 
   const handleClose = (isPaymentSuccessful: boolean) => {
