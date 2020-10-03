@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
@@ -6,7 +6,6 @@ import Actions from '../../components/checkout/Actions';
 import useGetProducts from './hooks/useProducts';
 import ListProducts from './components/ListProducts';
 import AppBar from '../../components/checkout/AppBar';
-import { IProduct } from '../../context/Checkout';
 
 export const Container = styled(PageWrapper)`
   display: flex;
@@ -29,30 +28,19 @@ export const Container = styled(PageWrapper)`
 `;
 
 const Products: FC = () => {
-  const [isNextDisabled, setIsNextDisabled] = useState(true);
-  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
-  const products = useGetProducts('');
-
-  const handleSelection = (product: IProduct) => {
-    setSelectedProduct(product?.id === selectedProduct?.id ? null : product);
-    setIsNextDisabled(product?.id === selectedProduct?.id);
-  };
+  const { products, selectedProduct } = useGetProducts('');
 
   return (
     <Container>
       <AppBar />
       <Stepper activeStep={Steps.PRODUCT} />
-      <ListProducts
-        products={products}
-        selectedProduct={selectedProduct}
-        onSelection={handleSelection}
-      />
+      <ListProducts products={products} />
       <Actions
         urlReturn='/'
-        urlNext={`/products/${selectedProduct?.id}/volume`}
+        urlNext='/volumes'
         labelNext='Próximo'
         labelReturn='Voltar'
-        isDisabled={isNextDisabled}
+        isDisabled={selectedProduct === null}
       />
     </Container>
   );

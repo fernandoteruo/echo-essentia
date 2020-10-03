@@ -1,22 +1,27 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import getAvailableVolume from '../api/volume';
-import { IVolume } from '../../../context/Checkout';
+import { IVolume, OrderContext } from '../../../context/Order';
 
-interface IVolumeUrlParams {
-  productId: string;
+interface IUseVolume {
+  volumes: IVolume[];
+  selectedVolume: IVolume | null;
 }
 
-const useGetAvailableVolumes: (kioskId: string) => IVolume[] = (kioskId) => {
-  const { productId } = useParams<IVolumeUrlParams>();
-  const [availableVolume, setAvailableVolume] = useState<IVolume[]>([]);
+const useVolume: (kioskId: string) => IUseVolume = (kioskId) => {
+  const order = useContext(OrderContext);
+  const [volumes, setVolumes] = useState<IVolume[]>([]);
 
   useEffect(() => {
-    const fetchedAvailable = getAvailableVolume(kioskId, productId);
-    setAvailableVolume(fetchedAvailable);
-  }, [kioskId, productId]);
+    if (order?.product?.id) {
+      const fetchedAvailable = getAvailableVolume(kioskId, order?.product?.id);
+      setVolumes(fetchedAvailable);
+    }
+  }, []);
 
-  return availableVolume;
+  return {
+    volumes,
+    selectedVolume: order !== null ? order.volume : null,
+  };
 };
 
-export default useGetAvailableVolumes;
+export default useVolume;

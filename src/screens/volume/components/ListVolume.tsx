@@ -1,16 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import ChooseButton from '../../../components/checkout/ChooseButton';
 import Price from '../../../components/checkout/Price';
 import { maskedCurrency } from '../../../hooks/formatter';
 import { Card, CardSection } from '../../../components/checkout/Card';
 import List from '../../../components/checkout/List';
-import { IVolume } from '../../../context/Checkout';
+import { IVolume, OrderContext } from '../../../context/Order';
 
 interface IProps {
   volumes: IVolume[];
-  selectedVolume?: IVolume | null;
-  onSelection: (volume: IVolume) => void;
 }
 
 const Volume = styled(Card)`
@@ -38,19 +36,16 @@ const UnitPrice = styled(CardSection)`
   height: 20px !important;
 `;
 
-const ListVolume: FC<IProps> = ({
-  volumes,
-  selectedVolume,
-  onSelection,
-}: IProps) => {
+const ListVolume: FC<IProps> = ({ volumes }: IProps) => {
+  const order = useContext(OrderContext);
   const handleClick = (volume: IVolume) => () => {
-    onSelection(volume);
+    order?.setVolume(order?.volume === volume ? null : volume);
   };
 
   return (
     <List>
       {volumes.map((volume) => {
-        const isSelected = volume.id === selectedVolume?.id;
+        const isSelected = volume.id === order?.volume?.id;
         const volumeStr = `Volume: ${volume.amount} ml`;
         const unitPrice = maskedCurrency(
           Math.floor(volume.price / volume.amount),

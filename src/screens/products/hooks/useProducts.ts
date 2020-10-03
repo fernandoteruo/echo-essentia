@@ -1,8 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import getProducts from '../api/products';
-import { IProduct } from '../../../context/Checkout';
+import { IProduct, OrderContext } from '../../../context/Order';
 
-const useGetProducts: (kioskId: string) => IProduct[] = (kioskId) => {
+interface IUseProducts {
+  products: IProduct[];
+  selectedProduct: IProduct | null;
+}
+
+const useGetProducts: (kioskId: string) => IUseProducts = (kioskId) => {
+  const order = useContext(OrderContext);
   const [products, setProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
@@ -10,7 +16,10 @@ const useGetProducts: (kioskId: string) => IProduct[] = (kioskId) => {
     setProducts(fetchedProducts);
   }, [kioskId]);
 
-  return products;
+  return {
+    products,
+    selectedProduct: order !== null ? order.product : null,
+  };
 };
 
 export default useGetProducts;

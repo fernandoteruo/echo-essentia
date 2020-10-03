@@ -5,6 +5,7 @@ import { theme } from './themes';
 import { GlobalStyle } from './components/globals/styles';
 import ModalLoading from './components/feedback/ModalLoading';
 import SnackbarWrapper from './context/Snackbar';
+import OrderWrapper from './context/Order';
 
 const Start = lazy(() => import('./screens/start'));
 const Products = lazy(() => import('./screens/products'));
@@ -19,42 +20,24 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <SnackbarWrapper>
-        <GlobalStyle />
-        <Router>
-          <Suspense fallback={fallback}>
-            <main>
-              <Switch>
-                <Route exact path='/'>
-                  <Start />
-                </Route>
-                <Route exact path='/products'>
-                  <Products />
-                </Route>
-                <Route exact path='/products/:productId/volume'>
-                  <Volume />
-                </Route>
-                <Route
-                  exact
-                  path='/products/:productId/volume/:volumeId/payment'
-                >
-                  <Payment />
-                </Route>
-                <Route
-                  exact
-                  path='/products/:productId/volume/:volumeId/filling'
-                >
-                  <Filling />
-                </Route>
-                <Route exact path='/thank-you'>
-                  <ThankYou />
-                </Route>
-                <Route exact path='/login'>
-                  <Login />
-                </Route>
-              </Switch>
-            </main>
-          </Suspense>
-        </Router>
+        <OrderWrapper>
+          <GlobalStyle />
+          <Router>
+            <Suspense fallback={fallback}>
+              <main>
+                <Switch>
+                  <Route exact path='/' component={Start} />
+                  <Route exact path='/products' component={Products} />
+                  <Route exact path='/volumes' component={Volume} />
+                  <Route exact path='/payment' component={Payment} />
+                  <Route exact path='/filling' component={Filling} />
+                  <Route exact path='/thank-you' component={ThankYou} />
+                  <Route exact path='/login' component={Login} />
+                </Switch>
+              </main>
+            </Suspense>
+          </Router>
+        </OrderWrapper>
       </SnackbarWrapper>
     </ThemeProvider>
   );

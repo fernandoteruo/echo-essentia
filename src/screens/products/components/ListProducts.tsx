@@ -1,15 +1,13 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import Price from '../../../components/checkout/Price';
 import ChooseButton from '../../../components/checkout/ChooseButton';
 import { Card, CardSection } from '../../../components/checkout/Card';
 import List from '../../../components/checkout/List';
-import { IProduct } from '../../../context/Checkout';
+import { IProduct, OrderContext } from '../../../context/Order';
 
 interface IProps {
   products: IProduct[];
-  selectedProduct?: IProduct | null;
-  onSelection: (product: IProduct) => void;
 }
 
 const Product = styled(Card)`
@@ -48,19 +46,17 @@ const ProductPrice = styled(CardSection)`
 
 const ValueFrom = styled(CardSection)``;
 
-const ListProducts: FC<IProps> = ({
-  products,
-  selectedProduct,
-  onSelection,
-}: IProps) => {
+const ListProducts: FC<IProps> = ({ products }: IProps) => {
+  const order = useContext(OrderContext);
+
   const handleClick = (product: IProduct) => () => {
-    onSelection(product);
+    order?.setProduct(order?.product === product ? null : product);
   };
 
   return (
     <List>
       {products.map((product) => {
-        const isSelected = product.id === selectedProduct?.id;
+        const isSelected = product.id === order?.product?.id;
         return (
           <Product
             button

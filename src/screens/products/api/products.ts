@@ -1,4 +1,4 @@
-import { IProduct } from '../../../context/Checkout';
+import { IProduct } from '../../../context/Order';
 
 const getProducts: (kioskId: string) => IProduct[] = (kioskId) => {
   const MOCKED_PRODUCTS = [

@@ -40,9 +40,7 @@ const Payment: FC = () => {
     if (isPaymentSuccessful) {
       setTimeout(() => {
         snackbar?.setIsVisible(false);
-        history.push(
-          `/products/${payment?.productId}/volume/${payment?.volumeId}/filling`,
-        );
+        history.push('/filling');
       }, TIMEOUT_REDIRECT);
     }
   };
@@ -61,10 +59,7 @@ const Payment: FC = () => {
       <PaymentType price={payment?.price || 0} />
       {shouldShowPaymentDialog ? <PaymentDialog onClose={handleClose} /> : null}
       <Container>
-        <ReturnButton
-          label='Voltar'
-          url={`/products/${payment?.productId}/volume`}
-        />
+        <ReturnButton label='Voltar' url='/volumes' />
         <PrimaryButton onClick={handleOpen}>Pagar</PrimaryButton>
       </Container>
     </PageWrapper>
