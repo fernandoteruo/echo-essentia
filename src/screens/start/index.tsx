@@ -13,18 +13,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 5px;
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.md} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.lg} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.xl} {
-  }
 `;
 
 const ContainerDevelopedBy = styled.div`
