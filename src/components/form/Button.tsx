@@ -26,6 +26,15 @@ const Button = styled.button`
   }
 `;
 
+export const PrimaryButton = styled(Button)`
+  background-color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.white};
+
+  :disabled {
+    opacity: 0.7;
+  }
+`;
+
 export const Label = styled.div`
   display: flex;
 `;

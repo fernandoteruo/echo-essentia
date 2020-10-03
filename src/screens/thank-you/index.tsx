@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
-import Logo from '../start/components/Logo';
+import Logo from '../../components/checkout/Logo';
 import NavigationButton from '../../components/navigation/NavigationButton';
 
 const Container = styled.div`

@@ -1,29 +1,7 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { useHistory } from 'react-router-dom';
-import Button, { Icon, Label } from './Button';
-
-const StyledButton = styled(Button)`
-  background-color: ${(props) => props.theme.colors.primary};
-  color: ${(props) => props.theme.colors.white};
-
-  :disabled {
-    opacity: 0.7;
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.md} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.lg} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.xl} {
-  }
-`;
+import { Icon, Label, PrimaryButton } from '../form/Button';
 
 interface IProps {
   url: string;
@@ -45,14 +23,14 @@ const NavigationButton: FC<IProps> = ({
   };
 
   return (
-    <StyledButton onClick={navigateNext} disabled={isDisabled}>
+    <PrimaryButton onClick={navigateNext} disabled={isDisabled}>
       <Label>{label}</Label>
       {shouldShowIcon ? (
         <Icon>
           <ArrowForwardIcon />
         </Icon>
       ) : null}
-    </StyledButton>
+    </PrimaryButton>
   );
 };
 

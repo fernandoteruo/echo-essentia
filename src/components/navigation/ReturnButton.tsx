@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { useHistory } from 'react-router-dom';
-import Button, { Icon, Label } from './Button';
+import Button, { Icon, Label } from '../form/Button';
 
 const StyledButton = styled(Button)`
   background-color: ${(props) => props.theme.colors.white} !important;

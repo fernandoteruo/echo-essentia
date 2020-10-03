@@ -1,25 +1,12 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { IPayment } from '../api/payment';
-import { PageWrapper } from '../../../components/globals/styles';
 import Price from '../../../components/checkout/Price';
+import ProductReminder from '../../../components/checkout/ProductReminder';
 
 interface IProps {
   payment: IPayment | null;
 }
-
-const ProductImage = styled.img`
-  width: 100%;
-`;
-
-const Details = styled.div`
-  font-size: 16px;
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-`;
 
 const PriceContainer = styled.div`
   margin-top: 15px;
@@ -36,16 +23,17 @@ const PriceDescription = styled.div`
 
 const Info: FC<IProps> = ({ payment }: IProps) => {
   return (
-    <PageWrapper>
-      <ProductImage src={payment?.productImage} alt={payment?.productName} />
-      <Details>
-        {payment?.productName} /{payment?.volumeName}
-      </Details>
+    <>
+      <ProductReminder
+        productImage={payment?.productImage || ''}
+        productName={payment?.productName || ''}
+        volumeName={payment?.volumeName || ''}
+      />
       <PriceContainer>
         <PriceDescription>Total à vista:</PriceDescription>
         <Price value={payment?.price || 0} />
       </PriceContainer>
-    </PageWrapper>
+    </>
   );
 };
 

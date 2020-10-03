@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
-import Logo from './components/Logo';
+import Logo from '../../components/checkout/Logo';
 import NavigationButton from '../../components/navigation/NavigationButton';
-import DevelopedBy from './components/DevelopedBy';
+import DevelopedBy from '../../components/checkout/DevelopedBy';
 
 const Container = styled.div`
   height: 45vh;

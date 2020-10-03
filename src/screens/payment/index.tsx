@@ -6,9 +6,9 @@ import usePayment from './hooks/usePayment';
 import Info from './components/Info';
 import PaymentType from './components/Options';
 import ReturnButton from '../../components/navigation/ReturnButton';
-import StyledButton from '../../components/checkout/StyledButton';
 import { Container } from '../../components/checkout/Actions';
 import PaymentDialog from './components/Dialog';
+import { PrimaryButton } from '../../components/form/Button';
 
 const Payment: FC = () => {
   const payment = usePayment();
@@ -37,7 +37,7 @@ const Payment: FC = () => {
           label='Voltar'
           url={`/products/${payment?.productId}/volume`}
         />
-        <StyledButton onClick={handleOpen}>Pagar</StyledButton>
+        <PrimaryButton onClick={handleOpen}>Pagar</PrimaryButton>
       </Container>
     </PageWrapper>
   );

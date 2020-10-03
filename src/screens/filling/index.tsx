@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
 import Instructions from './components/Instructions';
-import StyledButton from '../../components/checkout/StyledButton';
 import ModalLoading from '../../components/feedback/ModalLoading';
+import { PrimaryButton } from '../../components/form/Button';
 
 const Filling: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +29,7 @@ const Filling: FC = () => {
       {isLoading ? <ModalLoading /> : null}
       <Stepper activeStep={Steps.FILLING} />
       <Instructions />
-      <StyledButton onClick={handleFill}>Encher</StyledButton>
+      <PrimaryButton onClick={handleFill}>Encher</PrimaryButton>
     </PageWrapper>
   );
 };

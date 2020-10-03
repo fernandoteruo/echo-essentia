@@ -1,26 +1,25 @@
 import styled from 'styled-components';
 import React, { FC } from 'react';
-import logo from '../../../resources/svg/echoEssentia/echoEssentiaLogoHorizontal.svg';
+import logo from '../../resources/svg/natura/logo.svg';
 
 const StyledImage = styled.img`
-  width: 80px;
-  margin-left: 20px;
+  width: 50%;
 
   @media ${({ theme: { screenWidth } }) => screenWidth.sm} {
+    width: 35%;
   }
 
   @media ${({ theme: { screenWidth } }) => screenWidth.md} {
+    width: 25%;
   }
 
   @media ${({ theme: { screenWidth } }) => screenWidth.lg} {
-  }
-
-  @media ${({ theme: { screenWidth } }) => screenWidth.xl} {
+    width: 20%;
   }
 `;
 
-const DevelopedBy: FC = () => {
+const Logo: FC = () => {
   return <StyledImage src={logo} />;
 };
 
-export default DevelopedBy;
+export default Logo;
