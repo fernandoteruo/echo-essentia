@@ -22,7 +22,7 @@ const Backdrop = styled(MuiBackdrop)`
 const Payment: FC = () => {
   const snackbar = useContext(SnackbarContext);
   const order = useContext(OrderContext);
-  const [isDisabled, setIsDisabled] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
   const [shouldShowPaymentDialog, setsShouldShowPaymentDialog] = useState(
     false,
   );

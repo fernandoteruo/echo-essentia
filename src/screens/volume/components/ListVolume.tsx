@@ -39,7 +39,7 @@ const UnitPrice = styled(CardSection)`
 const ListVolume: FC<IProps> = ({ volumes }: IProps) => {
   const order = useContext(OrderContext);
   const handleClick = (volume: IVolume) => () => {
-    order?.setVolume(order?.volume === volume ? null : volume);
+    order?.setVolume(order?.volume?.id === volume.id ? null : volume);
   };
 
   return (

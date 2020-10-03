@@ -30,6 +30,7 @@ interface IContext {
   setKioskId: (kioskId: string | null) => void;
   setProduct: (product: IProduct | null) => void;
   setVolume: (volume: IVolume | null) => void;
+  reset: () => void;
 }
 
 export const OrderContext = createContext<IContext | null>(null);
@@ -40,6 +41,13 @@ const OrderWrapper: FC<IProps> = ({ children }: IProps) => {
   const [kioskId, setKioskId] = useState<string | null>(null);
   const [product, setProduct] = useState<IProduct | null>(null);
   const [volume, setVolume] = useState<IVolume | null>(null);
+
+  const reset = () => {
+    setId(null);
+    setNumber(null);
+    setProduct(null);
+    setVolume(null);
+  };
 
   const value: IContext = {
     id,
@@ -52,6 +60,7 @@ const OrderWrapper: FC<IProps> = ({ children }: IProps) => {
     setKioskId,
     setProduct,
     setVolume,
+    reset,
   };
 
   return (

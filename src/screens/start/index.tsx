@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
 import Logo from '../../components/checkout/Logo';
 import NavigationButton from '../../components/navigation/NavigationButton';
 import DevelopedBy from '../../components/checkout/DevelopedBy';
+import { OrderContext } from '../../context/Order';
 
 const Container = styled.div`
   height: 45vh;
@@ -23,6 +24,12 @@ const ContainerDevelopedBy = styled.div`
 `;
 
 const Start: FC = () => {
+  const order = useContext(OrderContext);
+
+  useEffect(() => {
+    order?.reset();
+  }, [order]);
+
   return (
     <PageWrapper>
       <Container>
