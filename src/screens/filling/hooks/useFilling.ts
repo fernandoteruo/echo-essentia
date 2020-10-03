@@ -19,8 +19,8 @@ const useFilling: () => IFilling = () => {
     setIsLoading(true);
     try {
       const data = {
-        method: 'ping',
-        name: 'Ping',
+        method: 'method',
+        name: 'Command Test',
         payloads: {
           Status: true,
         },
