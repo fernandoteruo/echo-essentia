@@ -33,7 +33,7 @@ const errorInterceptor = (error: any) => {
   } = error;
 
   if (status === ApiStatus.UNAUTHORISED) {
-    window.location.assign('/admin');
+    window.location.assign('/login');
   }
 
   throw new Error(statusText);

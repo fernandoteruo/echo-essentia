@@ -11,7 +11,7 @@ const Volume = lazy(() => import('./screens/volume'));
 const Payment = lazy(() => import('./screens/payment'));
 const Filling = lazy(() => import('./screens/filling'));
 const ThankYou = lazy(() => import('./screens/thank-you'));
-const Admin = lazy(() => import('./screens/admin'));
+const Login = lazy(() => import('./screens/login'));
 
 function App() {
   const fallback = <ModalLoading />;
@@ -40,8 +40,8 @@ function App() {
               <Route exact path='/thank-you'>
                 <ThankYou />
               </Route>
-              <Route exact path='/admin'>
-                <Admin />
+              <Route exact path='/login'>
+                <Login />
               </Route>
             </Switch>
           </main>
