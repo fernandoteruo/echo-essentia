@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
-import Instructions from './components/Instructions';
+import Instructions, { BUTTON_LABEL } from './components/Instructions';
 import ModalLoading from '../../components/feedback/ModalLoading';
 import { PrimaryButton } from '../../components/form/Button';
 import useFilling from './hooks/useFilling';
@@ -18,7 +18,7 @@ const Filling: FC = () => {
       {isLoading ? <ModalLoading /> : null}
       <Stepper activeStep={Steps.FILLING} />
       <Instructions />
-      <PrimaryButton onClick={handleFill}>Encher</PrimaryButton>
+      <PrimaryButton onClick={handleFill}>{BUTTON_LABEL}</PrimaryButton>
     </PageWrapper>
   );
 };
