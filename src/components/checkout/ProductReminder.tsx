@@ -1,12 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { PageWrapper } from '../globals/styles';
-
-interface IProps {
-  productName: string;
-  productImage: string;
-  volumeName?: string;
-}
+import { OrderContext } from '../../context/Order';
 
 const ProductImage = styled.img`
   width: 60%;
@@ -21,16 +16,25 @@ const Details = styled.div`
   font-weight: 600;
 `;
 
-const ProductReminder: FC<IProps> = ({
-  productImage,
-  productName,
-  volumeName,
-}: IProps) => {
+const Product = styled.div`
+  margin-right: 10px;
+`;
+
+const Volume = styled.div`
+  margin-left: 10px;
+`;
+
+const ProductReminder: FC = () => {
+  const order = useContext(OrderContext);
+
   return (
     <PageWrapper>
-      <ProductImage src={productImage} alt={productName} />
+      <ProductImage src={order?.product?.imageUrl} alt={order?.product?.name} />
       <Details>
-        {productName} / {volumeName}
+        <Product>{order?.product?.name}</Product>
+        {order?.volume !== null ? (
+          <Volume>{`${order?.volume?.amount} ml`}</Volume>
+        ) : null}
       </Details>
     </PageWrapper>
   );

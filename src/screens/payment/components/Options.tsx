@@ -6,7 +6,7 @@ import {
   RadioGroup,
 } from '@material-ui/core';
 import styled from 'styled-components';
-import { PaymentType } from '../api/payment';
+import PaymentType from '../api/payment';
 import { usePaymentTypeLabel } from '../hooks/usePayment';
 import { WithTheme } from '../../../themes';
 

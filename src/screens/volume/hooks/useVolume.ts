@@ -16,7 +16,7 @@ const useVolume: (kioskId: string) => IUseVolume = (kioskId) => {
       const fetchedAvailable = getAvailableVolume(kioskId, order?.product?.id);
       setVolumes(fetchedAvailable);
     }
-  }, []);
+  }, [kioskId]);
 
   return {
     volumes,

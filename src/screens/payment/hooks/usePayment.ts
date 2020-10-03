@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { getPaymentInfo, IPayment, PaymentType } from '../api/payment';
+import PaymentType from '../api/payment';
 import useCurrencyMasked from '../../../hooks/formatter';
 
 export const usePaymentTypeLabel: (
@@ -15,15 +14,4 @@ export const usePaymentTypeLabel: (
   return label;
 };
 
-const usePayment: () => IPayment | null = () => {
-  const [payment, setPayment] = useState<IPayment | null>(null);
-
-  useEffect(() => {
-    const fetchedAvailable = getPaymentInfo();
-    setPayment(fetchedAvailable);
-  }, []);
-
-  return payment;
-};
-
-export default usePayment;
+export default usePaymentTypeLabel;

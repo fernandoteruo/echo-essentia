@@ -1,12 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { IPayment } from '../api/payment';
 import Price from '../../../components/checkout/Price';
 import ProductReminder from '../../../components/checkout/ProductReminder';
-
-interface IProps {
-  payment: IPayment | null;
-}
 
 const PriceContainer = styled.div`
   margin-top: 15px;
@@ -21,17 +16,17 @@ const PriceDescription = styled.div`
   margin-right: 5px;
 `;
 
-const Info: FC<IProps> = ({ payment }: IProps) => {
+interface IProps {
+  price: number;
+}
+
+const Info: FC<IProps> = ({ price }: IProps) => {
   return (
     <>
-      <ProductReminder
-        productImage={payment?.productImage || ''}
-        productName={payment?.productName || ''}
-        volumeName={payment?.volumeName || ''}
-      />
+      <ProductReminder />
       <PriceContainer>
         <PriceDescription>Total à vista:</PriceDescription>
-        <Price value={payment?.price || 0} />
+        <Price value={price || 0} />
       </PriceContainer>
     </>
   );
