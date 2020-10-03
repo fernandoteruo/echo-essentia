@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import fillRecipient from '../api/filling';
 import { Severity, SnackbarContext } from '../../../context/Snackbar';
@@ -7,6 +7,8 @@ interface IFilling {
   isLoading: boolean;
   tryFill: () => void;
 }
+
+const FILLING_DURATION = 5000;
 
 const useFilling: () => IFilling = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,8 +26,10 @@ const useFilling: () => IFilling = () => {
         },
       };
       await fillRecipient('a6aef30e-2145-41af-8100-79259bad0b59', data);
-      setIsLoading(false);
-      history.push('thank-you');
+      setTimeout(() => {
+        setIsLoading(false);
+        history.push('thank-you');
+      }, FILLING_DURATION);
     } catch (e) {
       console.log(e);
       setIsLoading(false);
@@ -34,6 +38,12 @@ const useFilling: () => IFilling = () => {
       snackbar?.visibility(true);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      clearTimeout();
+    };
+  });
 
   return {
     isLoading,
