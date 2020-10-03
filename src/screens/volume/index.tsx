@@ -3,9 +3,9 @@ import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/checkout/Stepper';
 import useGetAvailableVolumes from './hooks/useVolume';
 import Actions from '../../components/checkout/Actions';
-import { IVolume } from './api/volume';
 import ListVolume from './components/ListVolume';
 import AppBar from '../../components/checkout/AppBar';
+import { IVolume } from '../../context/Checkout';
 
 const Volume: FC = () => {
   const [isNextDisabled, setIsNextDisabled] = useState(true);
@@ -28,7 +28,7 @@ const Volume: FC = () => {
       />
       <Actions
         urlReturn='/products'
-        urlNext={`/products/${selectedVolume?.productId}/volume/${selectedVolume?.id}/payment`}
+        urlNext='/products/product/volume/volume/payment'
         labelNext='Próximo'
         labelReturn='Voltar'
         isDisabled={isNextDisabled}

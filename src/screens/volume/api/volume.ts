@@ -1,16 +1,9 @@
-export interface IVolume {
-  id: string;
-  productId: string;
-  productName: string;
-  productImage: string;
-  amount: number;
-  price: number;
-}
+import { IVolume } from '../../../context/Checkout';
 
-export const getAvailableVolume: (
-  kioskId: string,
-  productId: string,
-) => IVolume[] = (kioskId, productId) => {
+const getAvailableVolume: (kioskId: string, productId: string) => IVolume[] = (
+  kioskId,
+  productId,
+) => {
   const MOCKED_VOLUME = [
     {
       id: 'volume1',
@@ -60,3 +53,5 @@ export const getAvailableVolume: (
   ];
   return MOCKED_VOLUME;
 };
+
+export default getAvailableVolume;

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getProducts, IProduct } from '../api/products';
+import getProducts from '../api/products';
+import { IProduct } from '../../../context/Checkout';
 
 const useGetProducts: (kioskId: string) => IProduct[] = (kioskId) => {
   const [products, setProducts] = useState<IProduct[]>([]);

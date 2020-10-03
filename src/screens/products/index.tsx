@@ -5,8 +5,8 @@ import Stepper, { Steps } from '../../components/checkout/Stepper';
 import Actions from '../../components/checkout/Actions';
 import useGetProducts from './hooks/useProducts';
 import ListProducts from './components/ListProducts';
-import { IProduct } from './api/products';
 import AppBar from '../../components/checkout/AppBar';
+import { IProduct } from '../../context/Checkout';
 
 export const Container = styled(PageWrapper)`
   display: flex;

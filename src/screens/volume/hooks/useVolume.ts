@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getAvailableVolume, IVolume } from '../api/volume';
+import getAvailableVolume from '../api/volume';
+import { IVolume } from '../../../context/Checkout';
 
 interface IVolumeUrlParams {
   productId: string;
