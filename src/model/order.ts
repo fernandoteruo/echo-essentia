@@ -22,15 +22,22 @@ export interface IVolume {
 }
 
 export enum PaymentType {
-  DEBIT = 'DEBIT',
-  CREDIT = 'CREDIT',
-  CREDIT_INSTALLS_2 = 'CREDIT_INSTALLS_2',
+  DEBIT,
+  CREDIT,
+  CREDIT_INSTALLS_2,
+}
+
+export enum PaymentStatus {
+  NOT_REQUESTED,
+  ERROR,
+  SUCCESS,
 }
 
 export interface IPayment {
   id: string;
   type: PaymentType;
   price: number;
+  status: PaymentStatus;
 }
 
 interface IOrder {

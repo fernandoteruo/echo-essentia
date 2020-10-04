@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import {
   Button,
   Dialog,
@@ -16,7 +16,7 @@ import {
 } from '@material-ui/icons';
 
 interface IProps {
-  onClose: (isPaymentSuccessful: boolean) => void;
+  onCancel: () => void;
 }
 
 interface IPaymentInstruction {
@@ -75,24 +75,13 @@ const CancelButton = styled(Button)`
   margin-bottom: 20px !important;
 `;
 
-const PaymentDialog: FC<IProps> = ({ onClose }: IProps) => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => onClose(true), 5000);
-
-    return () => {
-      clearTimeout();
-    };
-  });
-
+const PaymentDialog: FC<IProps> = ({ onCancel }: IProps) => {
   const handleCancel = () => {
-    setIsOpen(false);
-    onClose(false);
+    onCancel();
   };
 
   return (
-    <Container open={isOpen} disableBackdropClick disableEscapeKeyDown>
+    <Container open disableBackdropClick disableEscapeKeyDown>
       <Title>Efetue o pagamento</Title>
       <List>
         {PAYMENT_INSTRUCTIONS.map(({ label, Icon }) => {

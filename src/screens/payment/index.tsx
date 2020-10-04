@@ -1,7 +1,7 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { FC, useEffect, useState } from 'react';
 import MuiBackdrop from '@material-ui/core/Backdrop';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/order/Stepper';
 import Info from './components/Info';
@@ -10,64 +10,70 @@ import ReturnButton from '../../components/navigation/ReturnButton';
 import { Container } from '../../components/order/Actions';
 import PaymentDialog from './components/Dialog';
 import { PrimaryButton } from '../../components/form/Button';
-import { Severity, SnackbarContext } from '../../context/Snackbar';
-import { OrderContext } from '../../context/Order';
-
-const TIMEOUT_REDIRECT = 3000;
+import { IRootReducer } from '../../store';
+import { IVolume, PaymentStatus, PaymentType } from '../../model/order';
+import { usePaymentRequest, usePaymentResponse } from './hooks/usePayment';
 
 const Backdrop = styled(MuiBackdrop)`
   z-index: 1 !important;
 `;
 
 const Payment: FC = () => {
-  const snackbar = useContext(SnackbarContext);
-  const order = useContext(OrderContext);
   const [isDisabled, setIsDisabled] = useState(false);
-  const [shouldShowPaymentDialog, setsShouldShowPaymentDialog] = useState(
-    false,
+  const [paymentType, setPaymentType] = useState<PaymentType>(
+    PaymentType.DEBIT,
   );
-  const history = useHistory();
+  const [isDialogVisible, setIsDialogVisible] = useState(false);
 
-  const handleOpen = () => setsShouldShowPaymentDialog(true);
+  const selectedVolume = useSelector<IRootReducer, IVolume | null>(
+    (state) => state.order.volume,
+  );
+  const { handleResponse } = usePaymentResponse();
+  const {
+    payment,
+    isAwaitingPayment,
+    tryPayment,
+    cancelPayment,
+  } = usePaymentRequest();
 
-  const handleClose = (isPaymentSuccessful: boolean) => {
-    setsShouldShowPaymentDialog(false);
-    setIsDisabled(isPaymentSuccessful);
-    const snackbarMessage = isPaymentSuccessful
-      ? 'Pagamento efetuado com sucesso'
-      : 'Erro ao efetuar pagamento';
-    const snackbarSeverity = isPaymentSuccessful
-      ? Severity.SUCCESS
-      : Severity.ERROR;
-    snackbar?.setMessage(snackbarMessage);
-    snackbar?.setSeverity(snackbarSeverity);
-    snackbar?.setDuration(TIMEOUT_REDIRECT);
-    snackbar?.setIsVisible(true);
+  const handlePaymentChange = (type: PaymentType) => {
+    setPaymentType(type);
+  };
 
-    if (isPaymentSuccessful) {
-      setTimeout(() => {
-        snackbar?.setIsVisible(false);
-        history.push('/filling');
-      }, TIMEOUT_REDIRECT);
-    }
+  const handlePaymentRequest = () => {
+    setIsDisabled(true);
+    setIsDialogVisible(true);
+    tryPayment(paymentType, selectedVolume?.price || 0);
+  };
+
+  const handlePaymentCancel = () => {
+    cancelPayment();
   };
 
   useEffect(() => {
-    return () => {
-      clearTimeout();
-    };
-  });
+    if (!isAwaitingPayment && payment) {
+      setIsDialogVisible(false);
+      setIsDisabled(payment?.status === PaymentStatus.SUCCESS);
+      handleResponse(payment);
+    }
+  }, [isAwaitingPayment, payment, handleResponse]);
 
   return (
     <PageWrapper>
       <Backdrop open={isDisabled} />
       <Stepper activeStep={Steps.PAYMENT} />
-      <Info price={order?.volume?.price || 0} />
-      <Options price={order?.volume?.price || 0} />
-      {shouldShowPaymentDialog ? <PaymentDialog onClose={handleClose} /> : null}
+      <Info price={selectedVolume?.price || 0} />
+      <Options
+        price={selectedVolume?.price || 0}
+        paymentType={paymentType}
+        onChange={handlePaymentChange}
+      />
+      {isDialogVisible ? (
+        <PaymentDialog onCancel={handlePaymentCancel} />
+      ) : null}
       <Container>
         <ReturnButton label='Voltar' url='/volumes' />
-        <PrimaryButton onClick={handleOpen} disabled={isDisabled}>
+        <PrimaryButton onClick={handlePaymentRequest} disabled={isDisabled}>
           Pagar
         </PrimaryButton>
       </Container>

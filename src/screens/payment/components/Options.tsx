@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import {
   FormControl,
   FormControlLabel,
@@ -6,12 +6,14 @@ import {
   RadioGroup,
 } from '@material-ui/core';
 import styled from 'styled-components';
-import PaymentType from '../api/payment';
 import { usePaymentTypeLabel } from '../hooks/usePayment';
 import { WithTheme } from '../../../themes';
+import { PaymentType } from '../../../model/order';
 
 interface IProps {
   price: number;
+  paymentType: PaymentType;
+  onChange: (paymentType: PaymentType) => void;
 }
 
 const Container = styled.div`
@@ -34,13 +36,25 @@ const Radio = styled(MuiRadio)<WithTheme>`
   }
 `;
 
-const Options: FC<IProps> = ({ price }: IProps) => {
-  const [paymentType, setPaymentType] = useState<string>(PaymentType.DEBIT);
+const Options: FC<IProps> = ({ price, paymentType, onChange }: IProps) => {
   const labels = usePaymentTypeLabel(price);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    setPaymentType(value);
+    const intValue = parseInt(value, 10);
+    switch (intValue) {
+      case PaymentType.DEBIT:
+        onChange(PaymentType.DEBIT);
+        break;
+      case PaymentType.CREDIT:
+        onChange(PaymentType.CREDIT);
+        break;
+      case PaymentType.CREDIT_INSTALLS_2:
+        onChange(PaymentType.CREDIT_INSTALLS_2);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -56,19 +70,19 @@ const Options: FC<IProps> = ({ price }: IProps) => {
           <Input
             value={PaymentType.DEBIT}
             control={<Radio />}
-            label={labels.DEBIT}
+            label={labels[PaymentType.DEBIT]}
             checked={paymentType === PaymentType.DEBIT}
           />
           <Input
             value={PaymentType.CREDIT}
             control={<Radio />}
-            label={labels.CREDIT}
+            label={labels[PaymentType.CREDIT]}
             checked={paymentType === PaymentType.CREDIT}
           />
           <Input
             value={PaymentType.CREDIT_INSTALLS_2}
             control={<Radio />}
-            label={labels.CREDIT_INSTALLS_2}
+            label={labels[PaymentType.CREDIT_INSTALLS_2]}
             checked={paymentType === PaymentType.CREDIT_INSTALLS_2}
           />
         </RadioGroup>
