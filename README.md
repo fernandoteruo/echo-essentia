@@ -35,7 +35,7 @@ You can see the prototype of our solution [here - add link to demo]().
 
 This repository contains the source code for the WebApp / PWA that runs on the tablets.
 
-It has been built using Typescript + React and their ecosystem libraries.
+It has been built using Typescript + React + Redux and their ecosystem libraries.
 
 The communication with our hardware is through [Eugenio](https://eugenio.io/) api.
 
