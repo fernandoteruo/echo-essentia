@@ -27,14 +27,14 @@ clientsClaim();
 // eslint-disable-next-line no-underscore-dangle
 precacheAndRoute(self.__WB_MANIFEST);
 
-// Set up App Shell-style routing, so that all checkout requests
+// Set up App Shell-style routing, so that all navigation requests
 // are fulfilled with your index.html shell. Learn more at
 // https://developers.google.com/web/fundamentals/architecture/app-shell
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
 registerRoute(
   // Return false to exempt requests from being fulfilled by index.html.
   ({ request, url }: { request: Request; url: URL }) => {
-    // If this isn't a checkout, skip.
+    // If this isn't a order, skip.
     if (request.mode !== 'navigate') {
       return false;
     }

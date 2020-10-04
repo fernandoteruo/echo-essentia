@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
-import Logo from '../../components/checkout/Logo';
+import Logo from '../../components/order/Logo';
 import NavigationButton from '../../components/navigation/NavigationButton';
-import DevelopedBy from '../../components/checkout/DevelopedBy';
+import DevelopedBy from '../../components/order/DevelopedBy';
 
 const Container = styled.div`
   width: 100vw;

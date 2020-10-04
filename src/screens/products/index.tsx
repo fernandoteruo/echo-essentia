@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { PageWrapper } from '../../components/globals/styles';
-import Stepper, { Steps } from '../../components/checkout/Stepper';
-import Actions from '../../components/checkout/Actions';
+import Stepper, { Steps } from '../../components/order/Stepper';
+import Actions from '../../components/order/Actions';
 import useGetProducts from './hooks/useProducts';
 import ListProducts from './components/ListProducts';
 

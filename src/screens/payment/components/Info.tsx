@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import Price from '../../../components/checkout/Price';
-import ProductReminder from '../../../components/checkout/ProductReminder';
+import Price from '../../../components/order/Price';
+import ProductReminder from '../../../components/order/ProductReminder';
 
 const PriceContainer = styled.div`
   margin-top: 15px;

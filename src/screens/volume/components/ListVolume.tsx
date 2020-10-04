@@ -1,10 +1,10 @@
 import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
-import ChooseButton from '../../../components/checkout/ChooseButton';
-import Price from '../../../components/checkout/Price';
+import ChooseButton from '../../../components/order/ChooseButton';
+import Price from '../../../components/order/Price';
 import { maskedCurrency } from '../../../hooks/formatter';
-import { Card, CardSection } from '../../../components/checkout/Card';
-import List from '../../../components/checkout/List';
+import { Card, CardSection } from '../../../components/order/Card';
+import List from '../../../components/order/List';
 import { IVolume, OrderContext } from '../../../context/Order';
 
 interface IProps {

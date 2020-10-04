@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { PageWrapper } from '../../components/globals/styles';
-import Stepper, { Steps } from '../../components/checkout/Stepper';
+import Stepper, { Steps } from '../../components/order/Stepper';
 import Instructions, { BUTTON_LABEL } from './components/Instructions';
 import ModalLoading from '../../components/feedback/ModalLoading';
 import { PrimaryButton } from '../../components/form/Button';

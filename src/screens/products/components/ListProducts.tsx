@@ -1,9 +1,9 @@
 import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
-import Price from '../../../components/checkout/Price';
-import ChooseButton from '../../../components/checkout/ChooseButton';
-import { Card, CardSection } from '../../../components/checkout/Card';
-import List from '../../../components/checkout/List';
+import Price from '../../../components/order/Price';
+import ChooseButton from '../../../components/order/ChooseButton';
+import { Card, CardSection } from '../../../components/order/Card';
+import List from '../../../components/order/List';
 import { IProduct, OrderContext } from '../../../context/Order';
 
 interface IProps {
