@@ -1,19 +1,20 @@
 import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import fillRecipient from '../api/filling';
+import { useDispatch } from 'react-redux';
+import { fillRecipient, writeRFID } from '../api/filling';
 import { Severity, SnackbarContext } from '../../../context/Snackbar';
 import { deviceId } from '../../../config';
+import { complete } from '../../../store/order/actions';
 
 interface IFilling {
   isLoading: boolean;
   tryFill: () => void;
 }
 
-const FILLING_DURATION = 5000;
-
 const useFilling: () => IFilling = () => {
   const [isLoading, setIsLoading] = useState(false);
   const snackbar = useContext(SnackbarContext);
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const tryFill = async () => {
@@ -27,10 +28,10 @@ const useFilling: () => IFilling = () => {
         },
       };
       await fillRecipient(`${deviceId}`, data);
-      setTimeout(() => {
-        setIsLoading(false);
-        history.push('thank-you');
-      }, FILLING_DURATION);
+      await writeRFID();
+      setIsLoading(false);
+      history.push('thank-you');
+      dispatch(complete());
     } catch (e) {
       console.log(e);
       setIsLoading(false);
