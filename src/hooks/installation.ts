@@ -17,7 +17,6 @@ const useIsInstallable: () => IInstallable = () => {
   };
 
   useEffect(() => {
-    console.log('test');
     window.addEventListener('beforeinstallprompt', handleBeforeInstall);
 
     return () => {
