@@ -1,10 +1,13 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 import Price from '../../../components/order/Price';
 import ChooseButton from '../../../components/order/ChooseButton';
 import { Card, CardSection } from '../../../components/order/Card';
 import List from '../../../components/order/List';
-import { IProduct, OrderContext } from '../../../context/Order';
+import { setProduct } from '../../../store/order/actions';
+import { IProduct } from '../../../model/order';
+import { IRootReducer } from '../../../store';
 
 interface IProps {
   products: IProduct[];
@@ -47,16 +50,19 @@ const ProductPrice = styled(CardSection)`
 const ValueFrom = styled(CardSection)``;
 
 const ListProducts: FC<IProps> = ({ products }: IProps) => {
-  const order = useContext(OrderContext);
+  const dispatch = useDispatch();
+  const selectedProduct = useSelector<IRootReducer, IProduct | null>(
+    (state) => state.order.product,
+  );
 
   const handleClick = (product: IProduct) => () => {
-    order?.setProduct(order?.product === product ? null : product);
+    dispatch(setProduct(product));
   };
 
   return (
     <List>
       {products.map((product) => {
-        const isSelected = product.id === order?.product?.id;
+        const isSelected = product.id === selectedProduct?.id;
         return (
           <Product
             button

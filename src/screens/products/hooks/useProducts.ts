@@ -1,6 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import getProducts from '../api/products';
-import { IProduct, OrderContext } from '../../../context/Order';
+import { IProduct } from '../../../model/order';
+import { IRootReducer } from '../../../store';
 
 interface IUseProducts {
   products: IProduct[];
@@ -8,7 +10,9 @@ interface IUseProducts {
 }
 
 const useGetProducts: (kioskId: string) => IUseProducts = (kioskId) => {
-  const order = useContext(OrderContext);
+  const selectedProduct = useSelector<IRootReducer, IProduct | null>(
+    (state) => state.order.product,
+  );
   const [products, setProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
@@ -18,7 +22,7 @@ const useGetProducts: (kioskId: string) => IUseProducts = (kioskId) => {
 
   return {
     products,
-    selectedProduct: order !== null ? order.product : null,
+    selectedProduct,
   };
 };
 

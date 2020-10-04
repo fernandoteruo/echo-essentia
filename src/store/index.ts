@@ -3,7 +3,7 @@ import logger from 'redux-logger';
 import IOrder from '../model/order';
 import orderReducer from './order/reducer';
 
-interface IRootReducer {
+export interface IRootReducer {
   order: IOrder;
 }
 

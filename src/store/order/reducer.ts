@@ -31,23 +31,25 @@ const orderReducer = createReducer<IOrder>(initialState, (builder) => {
       };
     })
     .addCase(setProduct, (state, { payload }) => {
+      const product = state?.product?.id === payload.id ? null : payload;
       return {
         ...state,
-        product: payload.product,
+        product,
         status: OrderStatus.PENDING_VOLUME,
       };
     })
     .addCase(setVolume, (state, { payload }) => {
+      const volume = state?.volume?.id === payload.id ? null : payload;
       return {
         ...state,
-        volume: payload.volume,
+        volume,
         status: OrderStatus.PENDING_PAYMENT,
       };
     })
     .addCase(setPayment, (state, { payload }) => {
       return {
         ...state,
-        payment: payload.payment,
+        payment: payload,
         status: OrderStatus.PENDING_FILLING,
       };
     })
