@@ -10,11 +10,8 @@ const rootReducer = combineReducers<IRootReducer>({
   order: orderReducer,
 });
 
-const setupAppStore = () => {
-  const store = configureStore({
-    reducer: rootReducer,
-  });
-  return store;
-};
+const store = configureStore({
+  reducer: rootReducer,
+});
 
-export default setupAppStore();
+export default store;
