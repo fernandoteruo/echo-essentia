@@ -12,6 +12,11 @@ const Container = styled.div`
   padding: 10px;
 `;
 
+const ImageContainer = styled.div`
+  height: 100%;
+  padding: 24px;
+`;
+
 const StyledImage = styled.img`
   display: none;
 
@@ -67,7 +72,9 @@ const Stepper: FC<IProps> = ({ activeStep }: IProps) => {
 
   return (
     <Container>
-      <StyledImage src={clientPB} />
+      <ImageContainer>
+        <StyledImage src={clientPB} />
+      </ImageContainer>
       <StyledStepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <StyledStep key={label}>
@@ -75,7 +82,9 @@ const Stepper: FC<IProps> = ({ activeStep }: IProps) => {
           </StyledStep>
         ))}
       </StyledStepper>
-      <StyledImage src={iconPB} />
+      <ImageContainer>
+        <StyledImage src={iconPB} />
+      </ImageContainer>
     </Container>
   );
 };
