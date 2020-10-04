@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import fillRecipient from '../api/filling';
 import { Severity, SnackbarContext } from '../../../context/Snackbar';
+import { deviceId } from '../../../config';
 
 interface IFilling {
   isLoading: boolean;
@@ -25,7 +26,7 @@ const useFilling: () => IFilling = () => {
           Status: true,
         },
       };
-      await fillRecipient('a6aef30e-2145-41af-8100-79259bad0b59', data);
+      await fillRecipient(`${deviceId}`, data);
       setTimeout(() => {
         setIsLoading(false);
         history.push('thank-you');
