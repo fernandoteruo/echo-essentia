@@ -6,7 +6,6 @@ import { theme } from './themes';
 import { GlobalStyle } from './components/globals/styles';
 import ModalLoading from './components/feedback/ModalLoading';
 import SnackbarWrapper from './context/Snackbar';
-import OrderWrapper from './context/Order';
 import store from './store';
 
 const Start = lazy(() => import('./screens/start'));
@@ -23,24 +22,22 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <SnackbarWrapper>
-          <OrderWrapper>
-            <GlobalStyle />
-            <Router>
-              <Suspense fallback={fallback}>
-                <main>
-                  <Switch>
-                    <Route exact path='/' component={Start} />
-                    <Route exact path='/products' component={Products} />
-                    <Route exact path='/volumes' component={Volume} />
-                    <Route exact path='/payment' component={Payment} />
-                    <Route exact path='/filling' component={Filling} />
-                    <Route exact path='/thank-you' component={ThankYou} />
-                    <Route exact path='/login' component={Login} />
-                  </Switch>
-                </main>
-              </Suspense>
-            </Router>
-          </OrderWrapper>
+          <GlobalStyle />
+          <Router>
+            <Suspense fallback={fallback}>
+              <main>
+                <Switch>
+                  <Route exact path='/' component={Start} />
+                  <Route exact path='/products' component={Products} />
+                  <Route exact path='/volumes' component={Volume} />
+                  <Route exact path='/payment' component={Payment} />
+                  <Route exact path='/filling' component={Filling} />
+                  <Route exact path='/thank-you' component={ThankYou} />
+                  <Route exact path='/login' component={Login} />
+                </Switch>
+              </main>
+            </Suspense>
+          </Router>
         </SnackbarWrapper>
       </ThemeProvider>
     </Provider>
