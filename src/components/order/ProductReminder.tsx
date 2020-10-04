@@ -1,7 +1,9 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { PageWrapper } from '../globals/styles';
-import { OrderContext } from '../../context/Order';
+import { IRootReducer } from '../../store';
+import { IProduct, IVolume } from '../../model/order';
 
 const ProductImage = styled.img`
   width: 60%;
@@ -25,15 +27,23 @@ const Volume = styled.div`
 `;
 
 const ProductReminder: FC = () => {
-  const order = useContext(OrderContext);
+  const selectedProduct = useSelector<IRootReducer, IProduct | null>(
+    (state) => state.order.product,
+  );
+  const selectedVolume = useSelector<IRootReducer, IVolume | null>(
+    (state) => state.order.volume,
+  );
 
   return (
     <PageWrapper>
-      <ProductImage src={order?.product?.imageUrl} alt={order?.product?.name} />
+      <ProductImage
+        src={selectedProduct?.imageUrl}
+        alt={selectedProduct?.name}
+      />
       <Details>
-        <Product>{order?.product?.name}</Product>
-        {order?.volume !== null ? (
-          <Volume>{`${order?.volume?.amount} ml`}</Volume>
+        <Product>{selectedProduct?.name}</Product>
+        {selectedVolume !== null ? (
+          <Volume>{`${selectedVolume?.amount} ml`}</Volume>
         ) : null}
       </Details>
     </PageWrapper>
