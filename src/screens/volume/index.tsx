@@ -1,13 +1,19 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import { PageWrapper } from '../../components/globals/styles';
 import Stepper, { Steps } from '../../components/order/Stepper';
 import useVolume from './hooks/useVolume';
 import Actions from '../../components/order/Actions';
 import ListVolume from './components/ListVolume';
 import ProductReminder from '../../components/order/ProductReminder';
+import { IRootReducer } from '../../store';
+import { IVolume } from '../../model/order';
 
 const Volume: FC = () => {
-  const { volumes, selectedVolume } = useVolume('');
+  const volumes = useVolume('');
+  const selectedVolume = useSelector<IRootReducer, IVolume | null>(
+    (state) => state.order.volume,
+  );
 
   return (
     <PageWrapper>

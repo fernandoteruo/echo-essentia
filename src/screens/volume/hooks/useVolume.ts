@@ -1,27 +1,23 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import getAvailableVolume from '../api/volume';
-import { IVolume, OrderContext } from '../../../context/Order';
+import { IProduct, IVolume } from '../../../model/order';
+import { IRootReducer } from '../../../store';
 
-interface IUseVolume {
-  volumes: IVolume[];
-  selectedVolume: IVolume | null;
-}
-
-const useVolume: (kioskId: string) => IUseVolume = (kioskId) => {
-  const order = useContext(OrderContext);
+const useVolume: (kioskId: string) => IVolume[] = (kioskId) => {
   const [volumes, setVolumes] = useState<IVolume[]>([]);
+  const selectedProduct = useSelector<IRootReducer, IProduct | null>(
+    (state) => state.order.product,
+  );
 
   useEffect(() => {
-    if (order?.product?.id) {
-      const fetchedAvailable = getAvailableVolume(kioskId, order?.product?.id);
+    if (selectedProduct) {
+      const fetchedAvailable = getAvailableVolume(kioskId, selectedProduct?.id);
       setVolumes(fetchedAvailable);
     }
-  }, [kioskId, order]);
+  }, [kioskId]);
 
-  return {
-    volumes,
-    selectedVolume: order !== null ? order.volume : null,
-  };
+  return volumes;
 };
 
 export default useVolume;

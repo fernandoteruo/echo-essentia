@@ -1,4 +1,4 @@
-import { IVolume } from '../../../context/Order';
+import { IVolume } from '../../../model/order';
 
 const getAvailableVolume: (kioskId: string, productId: string) => IVolume[] = (
   kioskId,

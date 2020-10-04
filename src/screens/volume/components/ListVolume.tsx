@@ -1,11 +1,14 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 import ChooseButton from '../../../components/order/ChooseButton';
 import Price from '../../../components/order/Price';
 import { maskedCurrency } from '../../../hooks/formatter';
 import { Card, CardSection } from '../../../components/order/Card';
 import List from '../../../components/order/List';
-import { IVolume, OrderContext } from '../../../context/Order';
+import { setVolume } from '../../../store/order/actions';
+import { IRootReducer } from '../../../store';
+import { IVolume } from '../../../model/order';
 
 interface IProps {
   volumes: IVolume[];
@@ -37,15 +40,19 @@ const UnitPrice = styled(CardSection)`
 `;
 
 const ListVolume: FC<IProps> = ({ volumes }: IProps) => {
-  const order = useContext(OrderContext);
+  const dispatch = useDispatch();
+  const selectedVolume = useSelector<IRootReducer, IVolume | null>(
+    (state) => state.order.volume,
+  );
+
   const handleClick = (volume: IVolume) => () => {
-    order?.setVolume(order?.volume?.id === volume.id ? null : volume);
+    dispatch(setVolume(volume));
   };
 
   return (
     <List>
       {volumes.map((volume) => {
-        const isSelected = volume.id === order?.volume?.id;
+        const isSelected = volume.id === selectedVolume?.id;
         const volumeStr = `Volume: ${volume.amount} ml`;
         const unitPrice = maskedCurrency(
           Math.floor(volume.price / volume.amount),
