@@ -8,9 +8,10 @@ import ListVolume from './components/ListVolume';
 import ProductReminder from '../../components/order/ProductReminder';
 import { IRootReducer } from '../../store';
 import { IVolume } from '../../model/order';
+import { kioskId } from '../../config';
 
 const Volume: FC = () => {
-  const volumes = useVolume('');
+  const volumes = useVolume(kioskId);
   const selectedVolume = useSelector<IRootReducer, IVolume | null>(
     (state) => state.order.volume,
   );

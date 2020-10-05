@@ -8,6 +8,7 @@ import useGetProducts from './hooks/useProducts';
 import ListProducts from './components/ListProducts';
 import { IRootReducer } from '../../store';
 import { IProduct } from '../../model/order';
+import { kioskId } from '../../config';
 
 export const Container = styled(PageWrapper)`
   display: flex;
@@ -18,7 +19,7 @@ export const Container = styled(PageWrapper)`
 `;
 
 const Products: FC = () => {
-  const products = useGetProducts('');
+  const products = useGetProducts(kioskId);
   const selectedProduct = useSelector<IRootReducer, IProduct | null>(
     (state) => state.order.product,
   );

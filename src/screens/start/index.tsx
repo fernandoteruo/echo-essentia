@@ -1,11 +1,13 @@
 import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { PageWrapper } from '../../components/globals/styles';
 import Logo from '../../components/order/Logo';
-import NavigationButton from '../../components/navigation/NavigationButton';
 import DevelopedBy from '../../components/order/DevelopedBy';
-import { reset } from '../../store/order/actions';
+import { create, reset } from '../../store/order/actions';
+import { PrimaryButton } from '../../components/form/Button';
+import { kioskId } from '../../config';
 
 const Container = styled.div`
   height: 45vh;
@@ -26,6 +28,12 @@ const ContainerDevelopedBy = styled.div`
 
 const Start: FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleStart = () => {
+    dispatch(create({ id: 'orderId', number: 0, kioskId: kioskId || '' }));
+    history.push('/products');
+  };
 
   useEffect(() => {
     dispatch(reset());
@@ -37,7 +45,7 @@ const Start: FC = () => {
         <Logo />
       </Container>
       <Container>
-        <NavigationButton url='/products' label='Iniciar' />
+        <PrimaryButton onClick={handleStart}>Iniciar</PrimaryButton>
       </Container>
       <ContainerDevelopedBy>
         Uma solução:
