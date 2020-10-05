@@ -99,11 +99,9 @@ const ListProducts: FC<IProps> = ({ products }: IProps) => {
 
   return (
     <>
-      <Description
-        onClose={handleViewMoreClose}
-        product={viewMore}
-        isOpen={isDescriptionVisible}
-      />
+      {isDescriptionVisible ? (
+        <Description onClose={handleViewMoreClose} product={viewMore} />
+      ) : null}
       <List>
         {products.map((product) => {
           const isSelected = product.id === selectedProduct?.id;
