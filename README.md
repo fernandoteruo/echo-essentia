@@ -27,7 +27,7 @@ for the environment and the personal care industry.
 It's self-service kiosk with refill for fragrances to be installed inside Natura stores. The initial solution consists of
 a PWA to run on a tablet and integration with our hardware which fills the recipients.
 
-You can learn more about our solution [here - add link to pitch](), [here - add link to pdf]() and [here - add link to landing]()
+You can learn more about our solution [here](https://youtu.be/xEnfa-h9TlE), [here](https://drive.google.com/file/d/1rKgvk1E4whNaGfqR0ASxB4Jq7HqpwqxP/view) and [here](https://sites.google.com/view/echoessentia/home)
 
 You can see the prototype of our solution [here](https://www.youtube.com/watch?v=zvOasAS7lTA&ab_channel=LawsonDaikiHamasaki).
 
