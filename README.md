@@ -29,7 +29,7 @@ a PWA to run on a tablet and integration with our hardware which fills the recip
 
 You can learn more about our solution [here - add link to pitch](), [here - add link to pdf]() and [here - add link to landing]()
 
-You can see the prototype of our solution [here - add link to demo]().
+You can see the prototype of our solution [here](https://www.youtube.com/watch?v=zvOasAS7lTA&ab_channel=LawsonDaikiHamasaki).
 
 ## Technology
 
